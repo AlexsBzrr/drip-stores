@@ -1,4 +1,4 @@
-import ProductOptions from "../components/ProductOptions";
+import ProductOptions from "./ProductOptions";
 
 const ProductViewPage = () => {
   return (

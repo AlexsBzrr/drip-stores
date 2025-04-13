@@ -1,7 +1,7 @@
-import ProductCard from "../components/ProductCard";
-import ProductDetails from "../components/ProductDetails";
-import ProductListing from "../components/ProductListing";
-import ProductOptions from "../components/ProductOptions";
+import ProductCard from "./ProductCard";
+import ProductDetails from "./ProductDetails";
+import ProductListing from "./ProductListing";
+import ProductOptions from "./ProductOptions";
 
 const ProductListingPage = () => {
   return (

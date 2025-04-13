@@ -1,21 +1,19 @@
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Section from "./components/Section";
+import NavBar from "./components/NavBar";
+import AppRoutes from "./components/Routes";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <>
       <section>
-        <header>
-          <Header />
-        </header>
-        <main className="flex bg-light-gray-3">
-          <section>
-            <Section />
-          </section>
-          <section></section>
-          <section></section>
-          <section></section>
+        <main className="w-full bg-slate-300">
+          <BrowserRouter>
+            <Header />
+            <NavBar />
+            <AppRoutes />
+          </BrowserRouter>
         </main>
         <footer>
           <Footer />
