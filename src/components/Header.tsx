@@ -8,7 +8,7 @@ const Header = () => {
     <div className="w-full h-28 bg-white pt-8 ">
       <div className="grid grid-cols-12 mb-10 ml-24 mr-24">
         <div className="col-span-2">
-          <img className="w-64" src={logo} alt="logo" />
+          <img className="w-64" src={logo} alt="Logo Digital Store" />
         </div>
         <div className="col-span-6 flex justify-between mx-auto items-center bg-light-gray-3 rounded-lg w-xs">
           <input

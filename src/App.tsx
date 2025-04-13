@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <section>
-        <main className="w-full bg-slate-300">
+        <main className="w-full h-auto bg-slate-300">
           <BrowserRouter>
             <Header />
             <NavBar />
