@@ -12,7 +12,8 @@ function AppRoutes() {
       <Route path="/produtos" element={<ProductCard />} />
       <Route path="/categorias" element={<ProductListing />} />
       <Route path="/meusPedidos" element={<Section />} />
-      <Route path="/produto/:id" element={<ProductDetails />} />
+      <Route path="/produtos/:id" element={<ProductDetails />} />
+      <Route path="*" element={<div>404 - Página não encontrada</div>} />
     </Routes>
   );
 }

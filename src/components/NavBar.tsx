@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <nav className="flex w-full justify-start pl-24 pb-7 bg-white">
-      <ul className="flex justify-between gap-x-6">
+    <nav className="flex w-full h-20 justify-start pl-24 bg-white">
+      <ul className="flex justify-between gap-x-6 items-center">
         <li className="text-dark-gray-2 text-base ">
           <NavLink
             to="/"

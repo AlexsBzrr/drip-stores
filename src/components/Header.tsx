@@ -1,11 +1,11 @@
 import logo from "../assets/logo.svg";
 import search from "../assets/search.svg";
-import carrinho from "../assets/carrinho.svg";
+import carrinho from "../assets/mini-cart.svg";
 import ButtonPrimary from "./ButtonPrimary";
 
 const Header = () => {
   return (
-    <div className="w-full h-28 bg-white pt-8 ">
+    <div className="w-full h-20 bg-white pt-8 ">
       <div className="grid grid-cols-12 mb-10 ml-24 mr-24">
         <div className="col-span-2">
           <img className="w-64" src={logo} alt="Logo Digital Store" />
@@ -28,7 +28,7 @@ const Header = () => {
         </div>
         <div className="col-span-1 flex items-center justify-center">
           <button>
-            <img src={carrinho} alt="Meu carrinho" />
+            <img className="w-8" src={carrinho} alt="Meu carrinho" />
           </button>
         </div>
       </div>
