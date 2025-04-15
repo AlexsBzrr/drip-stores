@@ -8,10 +8,12 @@ function App() {
   return (
     <>
       <section>
-        <main className="w-full h-auto bg-light-gray-3">
+        <main className="w-full h-auto  overflow-x-hidden">
           <BrowserRouter>
-            <Header />
-            <NavBar />
+            <div className="bg-light-gray-3">
+              <Header />
+              <NavBar />
+            </div>
             <AppRoutes />
           </BrowserRouter>
         </main>

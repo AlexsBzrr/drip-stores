@@ -24,7 +24,7 @@ const Header = () => {
           <button>Cadastre-se</button>
         </div>
         <div className="col-span-1 flex items-center justify-center">
-          <ButtonPrimary>Entrar</ButtonPrimary>
+          <ButtonPrimary className="w-28 h-10">Entrar</ButtonPrimary>
         </div>
         <div className="col-span-1 flex items-center justify-center">
           <button>
