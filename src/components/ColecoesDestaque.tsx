@@ -41,7 +41,7 @@ const ColecoesDestaque = () => {
           {collections.map((collection, index) => (
             <div
               key={index}
-              className="max-w-sm rounded-full p-8 bg-white  w-[6.5rem]  h-[6.5rem] relative"
+              className="max-w-sm rounded-full shadow-md  p-8 bg-white  w-[6.5rem]  h-[6.5rem] relative"
             >
               <img src={collection.image} className=" w-16 " />
               <span className="flex justify-center mt-10">

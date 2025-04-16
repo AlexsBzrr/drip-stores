@@ -97,9 +97,7 @@ const HotProduct = () => {
               className="w-full h-40 object-contain mb-3"
             />
             <div className="flex flex-col items-start">
-              <h3 className="text-xs text-gray-400 font-bold uppercase">
-                {item.title}
-              </h3>
+              <h3 className="text-xs text-gray-400 font-bold ">{item.title}</h3>
               <h3 className="text-sm text-black font-semibold mb-2">
                 {item.description}
               </h3>

@@ -42,7 +42,7 @@ const CardColecoesDestaque = () => {
           {collections.map((collection, index) => (
             <div
               key={index}
-              className="max-w-[27rem] rounded-lg p-8 bg-light-blue relative  w-[55.3125rem]  h-[15.6875rem]"
+              className="max-w-[27rem] shadow-md  rounded-lg p-8 bg-light-blue relative  w-[55.3125rem]  h-[15.6875rem]"
             >
               <div className="w-40">
                 <span className="font-bold bg-yellow text-sm py-[5px] px-[0.9375rem] rounded-[1.8125rem] mt-10">
