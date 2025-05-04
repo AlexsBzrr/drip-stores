@@ -8,12 +8,19 @@ import HomePage from "../pages/HomePage";
 import PagesLayout from "../layouts/PagesLayout";
 import NotFound from "../pages/NotFound";
 import Login from "../modules/auth/pages/Login";
+import PrivateRoute from "./PrivateRoute";
 
 function PathsContainer() {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
-      <Route element={<PagesLayout />}>
+      <Route
+        element={
+          <PrivateRoute>
+            <PagesLayout />
+          </PrivateRoute>
+        }
+      >
         <Route path="/home" element={<HomePage />} />
         <Route path="/produtos" element={<ProductCard />} />
         <Route path="/categorias" element={<ProductListing />} />

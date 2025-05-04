@@ -6,7 +6,7 @@ const NavBar = () => {
       <ul className="flex justify-between gap-x-6 items-center">
         <li className="text-dark-gray-2 text-base ">
           <NavLink
-            to="/"
+            to="/home"
             className={({ isActive }) =>
               isActive
                 ? "text-primary border-b-2 border-primary pb-0.5 font-bold"
