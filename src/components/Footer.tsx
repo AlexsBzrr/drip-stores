@@ -1,7 +1,7 @@
-import logo from "../assets/logo-white.svg";
-import facebook from "../assets/face.svg";
-import instagram from "../assets/insta.svg";
-import twitter from "../assets/x.svg";
+import logo from "/images/logo-white.svg";
+import facebook from "/images/face.svg";
+import instagram from "/images/insta.svg";
+import twitter from "/images/x.svg";
 
 const Footer = () => {
   return (

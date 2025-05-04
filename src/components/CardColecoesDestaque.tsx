@@ -1,16 +1,16 @@
 import Buttonsecondary from "./buttons/Buttonsecondary";
 //images
-import Camisa from "../assets/blusa.svg";
-import fone from "../assets/fone.svg";
-import tenis from "../assets/tenis.svg";
+const camisa = "/images/blusa.svg";
+import fone from "/images/fone.svg";
+const tenis = "/images/tenis.svg";
 
 const collections = [
   {
     id: 1,
     discount: "30% OFF",
-    image: Camisa,
+    image: camisa,
     description: "Novo drop Supreme",
-    altDescription: "imagem de um aCamisa",
+    altDescription: "imagem de uma Camisa",
   },
 
   {
@@ -31,6 +31,10 @@ const collections = [
 ];
 
 const CardColecoesDestaque = () => {
+  const handleClick = (id: number) => {
+    console.log(id);
+  };
+
   return (
     <div className="flex flex-row  items-start justify-center h-auto  px-24 pb-6">
       <div>
@@ -52,7 +56,12 @@ const CardColecoesDestaque = () => {
                   <h3 className="text-3xl leading-9 text-dark-gray-2 font-bold mt-3">
                     {collection.description}
                   </h3>
-                  <Buttonsecondary className="mt-9">Comprar</Buttonsecondary>
+                  <Buttonsecondary
+                    onClick={() => handleClick(collection.id)}
+                    className="mt-9"
+                  >
+                    Comprar
+                  </Buttonsecondary>
                 </div>
               </div>
               <img

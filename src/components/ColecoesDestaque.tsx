@@ -1,5 +1,5 @@
 //images
-import Camisa from "../assets/camisa-pink.svg";
+import Camisa from "/images/camisa-pink.svg";
 const collections = [
   {
     id: 1,

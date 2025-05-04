@@ -1,5 +1,5 @@
 //images
-import tenis from "../assets/tenis2.svg";
+const tenis = "/images/tenis2.svg";
 
 const collections = [
   {

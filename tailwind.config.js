@@ -23,6 +23,10 @@ export default {
         "light-blue": "#add8e6",
         "light-blue-1": "#eeeff4",
       },
+      backgroundImage: {
+        "gradient-primary": "linear-gradient(to right, #b5b6f2, #cbc7f2)",
+        "gradient-secondary": "linear-gradient(to right, #cbc7f2, #d6d1f3)",
+      },
       margin: {
         sm: "8px",
         md: "16px",

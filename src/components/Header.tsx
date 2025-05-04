@@ -1,7 +1,8 @@
-import logo from "../assets/logo.svg";
-import search from "../assets/search.svg";
-import carrinho from "../assets/mini-cart.svg";
 import ButtonPrimary from "./buttons/ButtonPrimary";
+
+const logo = "/images/logo.svg";
+const search = "/images/search.svg";
+const carrinho = "/images/mini-cart.svg";
 
 const Header = () => {
   return (

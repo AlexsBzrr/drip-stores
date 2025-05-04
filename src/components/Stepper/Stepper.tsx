@@ -1,8 +1,9 @@
 import { useState } from "react";
-import shoes from "../../assets/shoesWhite-1.svg";
-import shoes2 from "../../assets/Laye1.svg";
-import ornaments from "../../assets/Ornament 11.svg";
 import ButtonPrimary from "../buttons/ButtonPrimary";
+
+const shoes = "/images/shoesWhite-1.svg";
+const shoes2 = "/images/Laye1.svg";
+const ornaments = "/images/Ornament 11.svg";
 
 const steps = [
   {
