@@ -10,7 +10,6 @@ const HomePage = () => {
       <div className="bg-light-gray-3">
         <Stepper />
       </div>
-
       <CardColecoesDestaque />
       <ColecoesDestaque />
       <HotProduct />

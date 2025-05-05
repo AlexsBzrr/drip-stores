@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "./buttons/ButtonPrimary";
 
 const logo = "/images/logo.svg";
@@ -5,6 +6,11 @@ const search = "/images/search.svg";
 const carrinho = "/images/mini-cart.svg";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/login");
+  };
+
   return (
     <div className="w-full h-20 bg-white pt-8 ">
       <div className="grid grid-cols-12 mb-10 ml-24 mr-24">
@@ -25,7 +31,9 @@ const Header = () => {
           <button>Cadastre-se</button>
         </div>
         <div className="col-span-1 flex items-center justify-center">
-          <ButtonPrimary className="w-28 h-10">Entrar</ButtonPrimary>
+          <ButtonPrimary onClick={handleClick} className="w-28 h-10">
+            Entrar
+          </ButtonPrimary>
         </div>
         <div className="col-span-1 flex items-center justify-center">
           <button>

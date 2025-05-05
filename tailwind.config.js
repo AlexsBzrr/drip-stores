@@ -13,7 +13,10 @@ export default {
         warning: "#f6aa1c",
         info: "#2196f3",
         white: "#ffffff",
-        yellow: "#E7FF86",
+        yellow: {
+          DEFAULT: "#E7FF86",
+          1: "#FFB31F",
+        },
         "dark-gray": "#1f1f1f",
         "dark-gray-2": "#474747",
         "dark-gray-3": "#666666",
