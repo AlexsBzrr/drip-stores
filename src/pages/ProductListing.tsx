@@ -1,8 +1,16 @@
 import { useNavigate } from "react-router-dom";
+import { IProductDetails } from "./data/productsDetails.interface";
 
-const tenis = "/images/tenis2.svg";
+const tenis = "/images/newtenis6.jpeg";
+const tenis2 = "/images/tenis2.svg";
+const tenis3 = "/images/newtenis1.jpeg";
+const tenis4 = "/images/newtenis5.jpeg";
+const tenis5 = "/images/newtenis3.jpeg";
+const tenis6 = "/images/tenis6.svg";
+const tenis7 = "/images/newtenis2.jpeg";
+const tenis8 = "/images/tenis8.svg";
 
-const collections = [
+export const collections: IProductDetails[] = [
   {
     id: 1,
     discount: "30% OFF",
@@ -16,7 +24,7 @@ const collections = [
   {
     id: 2,
     discount: "30% OFF",
-    image: tenis,
+    image: tenis2,
     description: "K-Swiss V8 - Masculino",
     precoAtual: "R$ 100.00",
     precoAnterior: "R$ 200.00",
@@ -26,7 +34,7 @@ const collections = [
   {
     id: 3,
     discount: "30% OFF",
-    image: tenis,
+    image: tenis3,
     description: "K-Swiss V8 - Masculino",
     precoAtual: "R$ 100.00",
     precoAnterior: "R$ 200.00",
@@ -35,7 +43,7 @@ const collections = [
   {
     id: 4,
     discount: "30% OFF",
-    image: tenis,
+    image: tenis4,
     description: "K-Swiss V8 - Masculino",
     precoAtual: "R$ 100.00",
     precoAnterior: "R$ 200.00",
@@ -44,7 +52,7 @@ const collections = [
   {
     id: 5,
     discount: "30% OFF",
-    image: tenis,
+    image: tenis5,
     description: "K-Swiss V8 - Masculino",
     precoAtual: "R$ 100.00",
     precoAnterior: "R$ 200.00",
@@ -53,13 +61,32 @@ const collections = [
   {
     id: 6,
     discount: "30% OFF",
-    image: tenis,
+    image: tenis6,
+    description: "K-Swiss V8 - Masculino",
+    precoAtual: "R$ 100.00",
+    precoAnterior: "R$ 200.00",
+    title: "Tênis",
+  },
+  {
+    id: 7,
+    discount: "30% OFF",
+    image: tenis7,
+    description: "K-Swiss V8 - Masculino",
+    precoAtual: "R$ 100.00",
+    precoAnterior: "R$ 200.00",
+    title: "Tênis",
+  },
+  {
+    id: 8,
+    discount: "30% OFF",
+    image: tenis8,
     description: "K-Swiss V8 - Masculino",
     precoAtual: "R$ 100.00",
     precoAnterior: "R$ 200.00",
     title: "Tênis",
   },
 ];
+
 const ProductListing = () => {
   const navigate = useNavigate();
 
@@ -165,7 +192,7 @@ const ProductListing = () => {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6">
-          {collections.map((item) => (
+          {collections.slice(0, 6).map((item) => (
             <div
               key={item.id}
               onClick={() => handleClick(item.id)}

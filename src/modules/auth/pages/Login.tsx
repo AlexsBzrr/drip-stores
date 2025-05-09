@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../../components/buttons/ButtonPrimary";
-import HeaderLogin from "../../../components/HeaderLogin";
-import FooterLogin from "../../../components/FooterLogin";
-import { ILogin } from "./ILogin";
+import { ILogin } from "./data/login.interface";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../../contexts/AuthContext";
+import Header from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 const tenis1 = "/images/melvin-buezo-1.svg";
 const tenis2 = "/images/melvin-buezo-2.svg";
@@ -26,7 +26,7 @@ const Login = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-secondary">
-      <HeaderLogin />
+      <Header />
       <div className="flex flex-1 items-center justify-center px-4 py-12 relative">
         <div className="grid md:grid-cols-2 w-full max-w-6xl mx-auto z-10 gap-8">
           {/* Formulário */}
@@ -103,7 +103,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <FooterLogin />
+      <Footer />
     </div>
   );
 };

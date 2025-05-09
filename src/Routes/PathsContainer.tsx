@@ -6,12 +6,17 @@ import PagesLayout from "../layouts/PagesLayout";
 import NotFound from "../pages/NotFound";
 import Login from "../modules/auth/pages/Login";
 import ProductDetails from "../pages/ProductDetails";
+import Registration from "../modules/auth/pages/Registration";
+import Section from "../pages/Section";
 
 function PathsContainer() {
   return (
     <Routes>
       {/* Rota de Login */}
       <Route path="/login" element={<Login />} />
+
+      {/* Rotas Usuários*/}
+      <Route path="/cadastro" element={<Registration />} />
 
       {/* Rotas sem proteção */}
       <Route element={<PagesLayout />}>
@@ -20,7 +25,7 @@ function PathsContainer() {
         <Route path="/produtos" element={<ProductListing />} />
         <Route path="/produtos/:id" element={<ProductDetails />} />
         <Route path="/categorias" element={<ProductCard />} />
-        <Route path="/meusPedidos" element={<ProductCard />} />
+        <Route path="/meusPedidos" element={<Section />} />
       </Route>
 
       {/* Rota para "not found" */}

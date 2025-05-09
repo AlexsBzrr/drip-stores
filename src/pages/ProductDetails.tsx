@@ -1,31 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { IProductDetails } from "./data/IProductsDetails";
+import { IProductDetails } from "./data/productsDetails.interface";
 import ButtonPrimary from "../components/buttons/ButtonPrimary";
-
-const tenis1 = "/images/tenis.svg";
-const tenis2 = "/images/tenis2.svg";
-
-const data = [
-  {
-    id: 1,
-    discount: "50% OFF",
-    image: tenis1,
-    description: "K-Swiss V8 - Feminino",
-    precoAtual: "100.00",
-    precoAnterior: "200.00",
-    title: "Tênis Air Max",
-  },
-  {
-    id: 2,
-    discount: "80% OFF",
-    image: tenis2,
-    description: "K-Swiss V8 - Masculino",
-    precoAtual: "200.00",
-    precoAnterior: "400.00",
-    title: "Tênis Air Max 90",
-  },
-];
+import ProductCard from "./ProductCard";
+import { collections } from "./ProductListing";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -35,7 +13,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      const found = data.find((item) => item.id === parseInt(id || "0"));
+      const found = collections.find((item) => item.id === parseInt(id || "0"));
       setProduto(found);
     }, 500);
 
@@ -144,44 +122,7 @@ const ProductDetails = () => {
           </ButtonPrimary>
         </div>
       </div>
-      {/* Produtos relacionados */}
-      <div>
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-lg font-bold">Produtos Relacionados</h2>
-          <a href="#" className="text-sm text-pink-500 hover:underline">
-            Ver todos →
-          </a>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {[1, 2, 3, 4].map((_, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-xl shadow p-4 hover:shadow-md transition-shadow duration-300"
-            >
-              <span className="bg-green-100 text-green-700 font-bold text-xs py-1 px-2 rounded-full inline-block mb-2">
-                30% OFF
-              </span>
-              <img
-                src={produto.image}
-                alt="relacionado"
-                className="w-full h-32 object-contain mb-2"
-              />
-              <h3 className="text-xs text-gray-400 font-bold">Tênis</h3>
-              <p className="text-sm font-semibold text-black mb-1">
-                {produto.description}
-              </p>
-              <div className="flex items-center gap-2">
-                <span className="text-gray-400 line-through text-sm">
-                  {produto.precoAnterior}
-                </span>
-                <span className="text-black font-bold text-sm">
-                  {produto.precoAtual}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      <ProductCard />
     </div>
   );
 };

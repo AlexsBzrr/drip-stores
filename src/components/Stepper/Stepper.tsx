@@ -2,10 +2,23 @@ import { useState } from "react";
 import ButtonPrimary from "../buttons/ButtonPrimary";
 
 const shoes = "/images/shoesWhite-1.svg";
-const shoes2 = "/images/Laye1.svg";
+const shoes2 = "/images/laye1.svg";
+const shoes3 = "/images/nikeair1.png";
+const shoes4 = "/images/nikejordan.png";
+
 const ornaments = "/images/Ornament 11.svg";
 
-const steps = [
+const next = "/images/next.svg";
+const prev = "/images/previous.svg";
+
+interface IStep {
+  title: string;
+  headline: string;
+  description: string;
+  image: string;
+}
+
+const steps: IStep[] = [
   {
     title: "Melhores ofertas personalizadas",
     headline: "Queima de estoque Nike 🔥",
@@ -25,21 +38,14 @@ const steps = [
     headline: "Nike Air Retorno 👟",
     description:
       "Os modelos mais icônicos de volta para o seu estilo retrô favorito.",
-    image: shoes,
+    image: shoes3,
   },
   {
     title: "Esporte e performance",
     headline: "Alta performance Nike 🏃",
     description:
       "Desempenho máximo para treinos intensos com conforto e estilo.",
-    image: shoes2,
-  },
-  {
-    title: "Esporte e performance",
-    headline: "Alta performance Nike 🏃",
-    description:
-      "Desempenho máximo para treinos intensos com conforto e estilo.",
-    image: shoes,
+    image: shoes4,
   },
 ];
 
@@ -47,9 +53,31 @@ const Stepper = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const step = steps[currentStep];
 
+  const handleNext = () => {
+    if (currentStep < steps.length - 1) {
+      setCurrentStep((prev) => prev + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentStep > 0) {
+      setCurrentStep((prev) => prev - 1);
+    }
+  };
+
   return (
     <div>
-      <div className="grid grid-cols-2 pl-24 pr-24">
+      <div className="grid grid-cols-2 pl-24 pr-24 items-center relative">
+        {/* Botão Esquerda */}
+        <button
+          onClick={handlePrev}
+          disabled={currentStep === 0}
+          className="absolute left-8 top-1/2 transform -translate-y-1/2 text-3xl font-bold text-gray-500 hover:text-gray-800 disabled:opacity-30"
+        >
+          <img className="w-12" src={prev} alt="" />
+        </button>
+
+        {/* Conteúdo Textual */}
         <div className="flex flex-col gap-4 items-start justify-center w-[510px]">
           <span className="text-base leading-4 text-warning font-bold">
             {step.title}
@@ -62,15 +90,32 @@ const Stepper = () => {
           </span>
           <ButtonPrimary className="w-56 h-12">Ver Ofertas</ButtonPrimary>
         </div>
+
+        {/* Imagem */}
         <div className="relative flex flex-col items-center justify-center min-h-[30rem]">
           <img
             className="absolute top-6 right-10 w-20"
             src={ornaments}
             alt="Ornamentos"
           />
-          <img src={step.image} alt="Imagem do Step" />
+          <img
+            className="w-fit object-cover"
+            src={step.image}
+            alt="Imagem do Step"
+          />
         </div>
+
+        {/* Botão Direita */}
+        <button
+          onClick={handleNext}
+          disabled={currentStep === steps.length - 1}
+          className="absolute right-8 top-1/2 transform -translate-y-1/2 text-3xl font-bold text-gray-500 hover:text-gray-800 disabled:opacity-30"
+        >
+          <img className="w-12" src={next} alt="" />
+        </button>
       </div>
+
+      {/* Indicadores Inferiores */}
       <div className="flex justify-center gap-2 pt-10 pb-8">
         {steps.map((_, index) => (
           <button

@@ -2,6 +2,7 @@ import logo from "/images/logo-white.svg";
 import facebook from "/images/face.svg";
 import instagram from "/images/insta.svg";
 import twitter from "/images/x.svg";
+import Informations from "./Informations";
 
 const Footer = () => {
   return (
@@ -21,37 +22,8 @@ const Footer = () => {
             <img src={twitter} alt="LogoTwitter" />
           </span>
         </div>
-        <div className="col-span-2 text-white text-base w-36 pt-6">
-          <h2 className="text-lg font-semibold pb-7">Informação</h2>
-          <ul className="text-white text-base font-normal leading-9">
-            <li>Sobre DripStore</li>
-            <li>Segurança</li>
-            <li>Wishlist</li>
-            <li>Blog</li>
-            <li>Trabalhe conosco</li>
-            <li> Meus Pedidos</li>
-          </ul>
-        </div>
-        <div className="col-span-2 text-white text-base w-36 pt-6">
-          <h2 className="text-lg font-semibold pb-7">Categorias</h2>
-          <ul className="text-white text-base font-normal leading-9">
-            <li>Sobre DripStore</li>
-            <li>Segurança</li>
-            <li>Wishlist</li>
-            <li>Blog</li>
-            <li>Trabalhe conosco</li>
-            <li> Meus Pedidos</li>
-          </ul>
-        </div>
-        <div className="col-span-2 text-white text-base w-36 pt-6">
-          <h2 className="text-lg font-semibold pb-7">Contato</h2>
-          <ul className="text-white text-base font-normal leading-9">
-            <li>
-              Av. Santos Dumont, 1510 - 1 andar - Aldeota, Fortaleza - CE,
-              60150-161
-            </li>
-            <li>(85) 3051-3411</li>
-          </ul>
+        <div className="col-span-6 text-white text-base  pt-6">
+          <Informations />
         </div>
       </div>
       <hr className="mt-8" />
