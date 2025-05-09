@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { IProductDetails } from "./data/productsDetails.interface";
 
-const tenis = "/images/newtenis6.jpeg";
+const tenis = "/images/newtenis6.png";
 const tenis2 = "/images/tenis2.svg";
-const tenis3 = "/images/newtenis1.jpeg";
-const tenis4 = "/images/newtenis5.jpeg";
-const tenis5 = "/images/newtenis3.jpeg";
-const tenis6 = "/images/tenis6.svg";
-const tenis7 = "/images/newtenis2.jpeg";
+const tenis3 = "/images/newtenis.png";
+const tenis4 = "/images/newtenis5.png";
+const tenis5 = "/images/newtenis3.png";
+const tenis6 = "/images/newtenis4.png";
+const tenis7 = "/images/newtenis2.png";
 const tenis8 = "/images/tenis8.svg";
 
 export const collections: IProductDetails[] = [

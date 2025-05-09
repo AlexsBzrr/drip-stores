@@ -26,30 +26,30 @@ const InformationsCard: IinformationsCardItem[] = [
   },
   {
     title: "Meus Pedidos",
-    link: "#",
+    link: "1",
   },
 ];
 
 const CategoryCard: IinformationsCardItem[] = [
   {
     title: "Camisetas",
-    link: "#",
+    link: "1",
   },
   {
     title: "Calças",
-    link: "#",
+    link: "1",
   },
   {
     title: "Bonés",
-    link: "#",
+    link: "1",
   },
   {
     title: "Headphones",
-    link: "#",
+    link: "1",
   },
   {
     title: "Tênis",
-    link: "#",
+    link: "1",
   },
 ];
 

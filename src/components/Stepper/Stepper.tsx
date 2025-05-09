@@ -3,11 +3,9 @@ import ButtonPrimary from "../buttons/ButtonPrimary";
 
 const shoes = "/images/shoesWhite-1.svg";
 const shoes2 = "/images/laye1.svg";
-const shoes3 = "/images/nikeair1.png";
+const shoes3 = "/images/newtenis3.png";
 const shoes4 = "/images/nikejordan.png";
-
 const ornaments = "/images/Ornament 11.svg";
-
 const next = "/images/next.svg";
 const prev = "/images/previous.svg";
 
@@ -77,7 +75,6 @@ const Stepper = () => {
           <img className="w-12" src={prev} alt="" />
         </button>
 
-        {/* Conteúdo Textual */}
         <div className="flex flex-col gap-4 items-start justify-center w-[510px]">
           <span className="text-base leading-4 text-warning font-bold">
             {step.title}
@@ -91,7 +88,6 @@ const Stepper = () => {
           <ButtonPrimary className="w-56 h-12">Ver Ofertas</ButtonPrimary>
         </div>
 
-        {/* Imagem */}
         <div className="relative flex flex-col items-center justify-center min-h-[30rem]">
           <img
             className="absolute top-6 right-10 w-20"
@@ -105,7 +101,6 @@ const Stepper = () => {
           />
         </div>
 
-        {/* Botão Direita */}
         <button
           onClick={handleNext}
           disabled={currentStep === steps.length - 1}
@@ -115,7 +110,6 @@ const Stepper = () => {
         </button>
       </div>
 
-      {/* Indicadores Inferiores */}
       <div className="flex justify-center gap-2 pt-10 pb-8">
         {steps.map((_, index) => (
           <button

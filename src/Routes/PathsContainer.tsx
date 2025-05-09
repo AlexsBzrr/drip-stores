@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import ProductCard from "../pages/ProductCard";
 import ProductListing from "../pages/ProductListing";
 import HomePage from "../pages/HomePage";
 import PagesLayout from "../layouts/PagesLayout";
@@ -7,7 +6,6 @@ import NotFound from "../pages/NotFound";
 import Login from "../modules/auth/pages/Login";
 import ProductDetails from "../pages/ProductDetails";
 import Registration from "../modules/auth/pages/Registration";
-import Section from "../pages/Section";
 
 function PathsContainer() {
   return (
@@ -24,8 +22,8 @@ function PathsContainer() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/produtos" element={<ProductListing />} />
         <Route path="/produtos/:id" element={<ProductDetails />} />
-        <Route path="/categorias" element={<ProductCard />} />
-        <Route path="/meusPedidos" element={<Section />} />
+        <Route path="/categorias" element={<NotFound />} />
+        <Route path="/meusPedidos" element={<NotFound />} />
       </Route>
 
       {/* Rota para "not found" */}
