@@ -16,6 +16,7 @@ export default {
         yellow: {
           DEFAULT: "#E7FF86",
           1: "#FFB31F",
+          2: "#CF8900",
         },
         "dark-gray": "#1f1f1f",
         "dark-gray-2": "#474747",

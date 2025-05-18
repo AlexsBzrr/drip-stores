@@ -20,31 +20,36 @@ const ProductOffering = () => {
   const oferta = Ofertas[currentStep];
 
   return (
-    <div>
-      <div className="grid grid-cols-2 gap-28 pl-24 pr-24">
-        <div className="relative flex flex-col items-center justify-center min-h-[30rem]">
+    <div className="w-full px-4 md:px-12 lg:px-24 py-12">
+      <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 items-center">
+        {/* Imagem */}
+        <div className="relative flex justify-center items-center w-full max-w-md mx-auto">
           <img
-            className="w-full h-full object-cover"
+            className="w-full h-auto"
             src={oferta.imageBackGroud}
-            alt="Sem Alt"
+            alt="Fundo"
           />
           <img
-            className="absolute z-10"
+            className="absolute z-10 w-64 md:w-80 lg:w-[20rem]"
             src={oferta.image}
-            alt="Imagem do Step"
+            alt="Tênis"
           />
         </div>
-        <div className="flex flex-col gap-4 items-start justify-center w-[510px]">
-          <span className="text-base leading-4 text-primary font-bold">
+
+        {/* Texto */}
+        <div className="flex flex-col gap-4 text-left max-w-xl">
+          <span className="text-primary text-sm md:text-base font-bold">
             {oferta.title}
           </span>
-          <span className="text-6xl font-extrabold leading-[64px]">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-dark-gray">
             {oferta.headline}
-          </span>
-          <span className="text-lg font-normal leading-9">
+          </h2>
+          <p className="text-sm md:text-base leading-6 text-gray-700">
             {oferta.description}
-          </span>
-          <ButtonPrimary className="w-56 h-12">Ver Ofertas</ButtonPrimary>
+          </p>
+          <ButtonPrimary className="w-full sm:w-56 h-12 mt-4">
+            Ver Oferta
+          </ButtonPrimary>
         </div>
       </div>
     </div>

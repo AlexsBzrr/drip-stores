@@ -1,91 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { IProductDetails } from "./data/productsDetails.interface";
-
-const tenis = "/images/newtenis6.png";
-const tenis2 = "/images/tenis2.svg";
-const tenis3 = "/images/newtenis.png";
-const tenis4 = "/images/newtenis5.png";
-const tenis5 = "/images/newtenis3.png";
-const tenis6 = "/images/newtenis4.png";
-const tenis7 = "/images/newtenis2.png";
-const tenis8 = "/images/tenis8.svg";
-
-export const collections: IProductDetails[] = [
-  {
-    id: 1,
-    discount: "30% OFF",
-    image: tenis,
-    description: "K-Swiss V8 - Masculino",
-    precoAtual: "R$ 100.00",
-    precoAnterior: "R$ 200.00",
-    title: "Tênis",
-  },
-
-  {
-    id: 2,
-    discount: "30% OFF",
-    image: tenis2,
-    description: "K-Swiss V8 - Masculino",
-    precoAtual: "R$ 100.00",
-    precoAnterior: "R$ 200.00",
-    title: "Tênis",
-  },
-
-  {
-    id: 3,
-    discount: "30% OFF",
-    image: tenis3,
-    description: "K-Swiss V8 - Masculino",
-    precoAtual: "R$ 100.00",
-    precoAnterior: "R$ 200.00",
-    title: "Tênis",
-  },
-  {
-    id: 4,
-    discount: "30% OFF",
-    image: tenis4,
-    description: "K-Swiss V8 - Masculino",
-    precoAtual: "R$ 100.00",
-    precoAnterior: "R$ 200.00",
-    title: "Tênis",
-  },
-  {
-    id: 5,
-    discount: "30% OFF",
-    image: tenis5,
-    description: "K-Swiss V8 - Masculino",
-    precoAtual: "R$ 100.00",
-    precoAnterior: "R$ 200.00",
-    title: "Tênis",
-  },
-  {
-    id: 6,
-    discount: "30% OFF",
-    image: tenis6,
-    description: "K-Swiss V8 - Masculino",
-    precoAtual: "R$ 100.00",
-    precoAnterior: "R$ 200.00",
-    title: "Tênis",
-  },
-  {
-    id: 7,
-    discount: "30% OFF",
-    image: tenis7,
-    description: "K-Swiss V8 - Masculino",
-    precoAtual: "R$ 100.00",
-    precoAnterior: "R$ 200.00",
-    title: "Tênis",
-  },
-  {
-    id: 8,
-    discount: "30% OFF",
-    image: tenis8,
-    description: "K-Swiss V8 - Masculino",
-    precoAtual: "R$ 100.00",
-    precoAnterior: "R$ 200.00",
-    title: "Tênis",
-  },
-];
+import { collections } from "../data/Colections";
+import ProductCard from "./ProductCard";
 
 const ProductListing = () => {
   const navigate = useNavigate();
@@ -198,30 +113,7 @@ const ProductListing = () => {
               onClick={() => handleClick(item.id)}
               className="bg-white rounded-xl shadow-sm p-4 w-full hover:shadow-md transition-shadow duration-300 cursor-pointer"
             >
-              {item.discount && (
-                <span className="font-bold bg-lime-200 text-dark-gray-2 text-xs py-1 px-3 rounded-full inline-block mb-2">
-                  {item.discount}
-                </span>
-              )}
-              <img
-                src={item.image}
-                alt={item.description}
-                className="w-full h-40 object-contain mb-3"
-              />
-              <h3 className="text-xs text-gray-500 font-bold mb-1">
-                {item.title}
-              </h3>
-              <p className="text-sm font-semibold text-black mb-1">
-                {item.description}
-              </p>
-              <div className="flex items-center gap-2">
-                <span className="text-gray-400 line-through text-base">
-                  {item.precoAnterior}
-                </span>
-                <span className="text-black font-bold text-base">
-                  {item.precoAtual}
-                </span>
-              </div>
+              <ProductCard item={item} />
             </div>
           ))}
         </div>

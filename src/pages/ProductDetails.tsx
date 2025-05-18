@@ -1,15 +1,21 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { IProductDetails } from "./data/productsDetails.interface";
+import { IProductDetails } from "../interfaces/productsDetails.interface";
 import ButtonPrimary from "../components/buttons/ButtonPrimary";
 import ProductCard from "./ProductCard";
-import { collections } from "./ProductListing";
+import { collections } from "../data/Colections";
+import { FadeLoader } from "react-spinners";
 
 const ProductDetails = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [produto, setProduto] = useState<IProductDetails | undefined>(
     undefined
   );
+
+  const handleClick = () => {
+    navigate("/produtos");
+  };
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -19,9 +25,13 @@ const ProductDetails = () => {
 
     return () => clearTimeout(timeout);
   }, [id]);
-
+  const currentColor = "#C92071";
   if (!produto) {
-    return <p className="p-8">Carregando produto...</p>;
+    return (
+      <div className="flex justify-center items-center h-40">
+        <FadeLoader height={15} color={currentColor} />{" "}
+      </div>
+    );
   }
 
   return (
@@ -42,7 +52,7 @@ const ProductDetails = () => {
             />
           </div>
           {/* Miniaturas (mock) */}
-          <div className="flex gap-4">
+          <div className="flex justify-between">
             {[1, 2, 3, 4, 5].map((i) => (
               <div
                 key={i}
@@ -70,10 +80,10 @@ const ProductDetails = () => {
           </div>
           <div className="flex items-center gap-3 mb-4">
             <span className="text-2xl font-bold text-black">
-              R$ {produto.precoAtual}
+              R$ {produto.currentPrice}
             </span>
             <span className="line-through text-gray-400 text-base">
-              {produto.precoAnterior}
+              {produto.previousPrice}
             </span>
           </div>
           {/* Descrição */}
@@ -122,7 +132,24 @@ const ProductDetails = () => {
           </ButtonPrimary>
         </div>
       </div>
-      <ProductCard />
+      <div className="flex justify-between items-center mb-6">
+        <span className="text-2xl font-bold text-dark-gray-2">
+          Produtos Ralacionados
+        </span>
+        <span
+          onClick={handleClick}
+          className="text-lg text-primary font-normal cursor-pointer "
+        >
+          Ver todos →{" "}
+        </span>
+      </div>
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-6">
+        {collections.slice(0, 4).map((item) => (
+          <div className="bg-white rounded-xl shadow-sm p-4 w-full hover:shadow-md transition-shadow duration-300 cursor-pointer">
+            <ProductCard item={item} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

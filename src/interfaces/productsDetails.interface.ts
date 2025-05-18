@@ -3,7 +3,7 @@ export interface IProductDetails {
   discount: string;
   image: string;
   description: string;
-  precoAtual: string;
-  precoAnterior: string;
+  currentPrice: string;
+  previousPrice: string;
   title: string;
 }

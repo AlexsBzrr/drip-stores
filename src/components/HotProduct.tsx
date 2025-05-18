@@ -1,4 +1,4 @@
-import { collections } from "../pages/ProductListing";
+import { collections } from "../data/Colections";
 
 const HotProduct = () => {
   return (
@@ -25,10 +25,10 @@ const HotProduct = () => {
               </h3>
               <div className="flex gap-3 items-center">
                 <h3 className="line-through text-gray-400 font-normal text-xl">
-                  {item.precoAnterior}
+                  {item.previousPrice}
                 </h3>
                 <h3 className="font-bold text-xl text-black">
-                  {item.precoAtual}
+                  {item.currentPrice}
                 </h3>
               </div>
             </div>

@@ -4,14 +4,14 @@ interface ButtonProps {
   className?: string;
 }
 
-const ButtonSecondary: React.FC<ButtonProps> = ({
+const ButtonTertiary: React.FC<ButtonProps> = ({
   children,
   onClick,
   className,
 }) => {
   return (
     <button
-      className={`bg-light-gray-3 text-primary hover:bg-secondary hover:text-light-gray-3 h-10 w-28 text-sm font-bold py-2 px-4 rounded-lg ${className}`}
+      className={`bg-yellow-1 text-white hover:bg-yellow-2 h-10 w-28 text-sm font-bold py-2 px-4 rounded-lg ${className}`}
       onClick={onClick}
     >
       {children}
@@ -19,4 +19,4 @@ const ButtonSecondary: React.FC<ButtonProps> = ({
   );
 };
 
-export default ButtonSecondary;
+export default ButtonTertiary;

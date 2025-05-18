@@ -24,32 +24,29 @@ const ColecoesDestaque = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div className="flex flex-row items-start justify-center h-auto pb-16">
-      <div>
-        <h2 className="flex justify-center text-2xl leading-9 text-dark-gray-2 font-bold pt-[2.375rem] pb-8">
-          Coleções em destaque
-        </h2>
-        <div className="flex gap-4 cursor-pointer">
-          {collections.map((collection, index) => (
-            <div
-              key={index}
-              className="max-w-sm rounded-full shadow-md p-8 bg-white w-[6.5rem] h-[6.5rem] relative"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <img
-                src={
-                  hoveredIndex === index ? collection.image : collection.image2
-                }
-                className="w-16"
-                alt={collection.title}
-              />
-              <span className="flex justify-center mt-10">
-                {collection.title}
-              </span>
-            </div>
-          ))}
-        </div>
+    <div className="flex flex-col items-center justify-center px-4 pb-16">
+      <h2 className="text-xl md:text-2xl leading-9 text-dark-gray-2 font-bold pt-10 pb-8 text-center">
+        Coleções em destaque
+      </h2>
+
+      <div className="flex flex-wrap justify-center gap-6 sm:gap-4">
+        {collections.map((collection, index) => (
+          <div
+            key={index}
+            className="flex flex-col items-center justify-center rounded-full shadow-md p-4 bg-white w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 transition-all duration-200"
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            <img
+              src={
+                hoveredIndex === index ? collection.image : collection.image2
+              }
+              className="w-10 md:w-14"
+              alt={collection.title}
+            />
+            <span className="text-sm text-center mt-4">{collection.title}</span>
+          </div>
+        ))}
       </div>
     </div>
   );
