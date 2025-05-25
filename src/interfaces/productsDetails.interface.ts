@@ -3,7 +3,14 @@ export interface IProductDetails {
   discount: string;
   image: string;
   description: string;
-  currentPrice: string;
-  previousPrice: string;
+  currentPrice: number;
+  previousPrice: number;
   title: string;
+}
+
+export interface IOrders {
+  id: string;
+  product: string;
+  status: string;
+  image: string;
 }

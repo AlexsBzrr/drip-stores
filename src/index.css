@@ -11,5 +11,5 @@ body {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply bg-light-blue-1;
+  @apply bg-blueBackground;
 }

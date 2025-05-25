@@ -2,9 +2,17 @@ import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../../components/buttons/ButtonPrimary";
 import { ILogin } from "./data/login.interface";
 import { useForm } from "react-hook-form";
-import { useAuth } from "../../../contexts/AuthContext";
+//import { useAuth } from "../../../contexts/AuthContext";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
+import axios from "axios";
+import { setUser } from "../../../store/slices/userSlice";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../../store";
+import { toast } from "react-toastify";
+import { useAuth } from "../../../contexts/AuthContext";
+
+//import { useState } from "react";
 
 const tenis1 = "/images/melvin-buezo-1.svg";
 const tenis2 = "/images/melvin-buezo-2.svg";
@@ -13,15 +21,33 @@ const facebook = "/images/Original.svg";
 const Login = () => {
   const { register, handleSubmit } = useForm<ILogin>();
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
   const { setIsLoged } = useAuth();
 
+  const handleCreateAccount = () => {
+    navigate("/criarConta", { replace: true });
+  };
+
   const handleLogin = (data: ILogin) => {
-    console.log(data);
-    // Lógica de autenticação
-    if (data.email === "admin" && data.password === "admin") {
-      setIsLoged(true);
-      navigate("/home", { replace: true });
-    }
+    axios
+      .post("http://localhost:3300/api/login", data)
+      .then((response) => {
+        const { nome } = response.data.data;
+        sessionStorage.setItem("nome", response.data.data.nome);
+        sessionStorage.setItem("token", response.data.token);
+        dispatch(
+          setUser({
+            nome,
+            token: response.data.token,
+          })
+        );
+        toast.success("Login efetuado com sucesso!");
+        setIsLoged(true);
+        navigate("/home", { replace: true });
+      })
+      .catch(() => {
+        toast.error("Login ou senha incorretos!");
+      });
   };
 
   return (
@@ -32,36 +58,39 @@ const Login = () => {
           {/* Formulário */}
           <div className="flex flex-col justify-center p-10 space-y-6 rounded-lg bg-white shadow-md w-full h-[30rem]">
             <form onSubmit={handleSubmit(handleLogin)}>
-              <h2 className="text-3xl font-bold text-gray-900">
+              <h2 className="text-3xl font-bold text-dark-gray">
                 Acesse sua conta
               </h2>
-              <p className="text-gray-600">
+              <p className="text-dark-gray-2">
                 Novo cliente? Então registre-se{" "}
-                <a href="#" className="text-primary underline">
+                <a
+                  onClick={handleCreateAccount}
+                  className="text-primary underline cursor-pointer"
+                >
                   aqui
                 </a>
                 .
               </p>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-dark-gray-2">
                     Login *
                   </label>
                   <input
                     type="text"
                     placeholder="Insira seu login ou email"
-                    className="mt-1 block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:ring-primary focus:border-primary"
+                    className="mt-1 block w-full rounded-md border border-light-gray-3 p-2 shadow-sm focus:ring-primary focus:border-primary"
                     {...register("email")}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-dark-gray-2">
                     Senha *
                   </label>
                   <input
                     type="password"
                     placeholder="Insira sua senha"
-                    className="mt-1 block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:ring-primary focus:border-primary"
+                    className="mt-1 block w-full rounded-md border border-light-gray-3 p-2 shadow-sm focus:ring-primary focus:border-primary"
                     {...register("password")}
                   />
                 </div>
@@ -71,7 +100,7 @@ const Login = () => {
                 <ButtonPrimary type="submit" className="w-full h-12">
                   Acessar Conta
                 </ButtonPrimary>
-                <div className="flex justify-center gap-4 text-sm text-gray-500">
+                <div className="flex justify-center gap-4 text-sm text-dark-gray-3">
                   <span> Ou faça login com</span>
                   <img
                     src={gmail}

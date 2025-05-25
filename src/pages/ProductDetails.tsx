@@ -1,20 +1,68 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { IProductDetails } from "../interfaces/productsDetails.interface";
+
 import ButtonPrimary from "../components/buttons/ButtonPrimary";
 import ProductCard from "./ProductCard";
 import { collections } from "../data/Colections";
 import { FadeLoader } from "react-spinners";
+import { toast } from "react-toastify";
+import { addToCart } from "../store/slices/cartSlice";
 
 const ProductDetails = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { id } = useParams();
   const [produto, setProduto] = useState<IProductDetails | undefined>(
     undefined
   );
+  const [selectedSize, setSelectedSize] = useState<number | null>(null);
+  const [selectedColor, setSelectedColor] = useState<number | null>(null);
+
+  const sizes = [35, 36, 37, 38, 39, 40, 41, 42];
+  const colors = [
+    { name: "Rosa", class: "bg-pink-400" },
+    { name: "Vermelho", class: "bg-red-500" },
+    { name: "Azul", class: "bg-cyan-500" },
+    { name: "Branco", class: "bg-white" },
+    { name: "Roxo", class: "bg-purple-600" },
+    { name: "Preto", class: "bg-gray-800" },
+    { name: "Laranja", class: "bg-orange-500" },
+  ];
 
   const handleClick = () => {
     navigate("/produtos");
+  };
+
+  const handleAddToCart = () => {
+    if (!produto) return;
+
+    // Validação de tamanho e cor
+    if (selectedSize === null) {
+      toast.error("Por favor, selecione um tamanho");
+      return;
+    }
+
+    if (selectedColor === null) {
+      toast.error("Por favor, selecione uma cor");
+      return;
+    }
+
+    // Adicionar ao carrinho
+    dispatch(
+      addToCart({
+        id: produto.id,
+        title: produto.title,
+        image: produto.image,
+        currentPrice: produto.currentPrice,
+        previousPrice: produto.previousPrice,
+        size: selectedSize,
+        color: colors[selectedColor].name,
+      })
+    );
+
+    toast.success("Produto adicionado ao carrinho!");
   };
 
   useEffect(() => {
@@ -25,11 +73,13 @@ const ProductDetails = () => {
 
     return () => clearTimeout(timeout);
   }, [id]);
+
   const currentColor = "#C92071";
+
   if (!produto) {
     return (
       <div className="flex justify-center items-center h-40">
-        <FadeLoader height={15} color={currentColor} />{" "}
+        <FadeLoader height={15} color={currentColor} />
       </div>
     );
   }
@@ -37,9 +87,10 @@ const ProductDetails = () => {
   return (
     <div className="p-8 max-w-screen-xl mx-auto">
       {/* Caminho */}
-      <nav className="text-sm text-gray-500 mb-4">
+      <nav className="text-sm text-dark-gray-2 mb-4">
         Home / Produtos / Tênis / {produto.title}
       </nav>
+
       {/* Conteúdo principal */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
         {/* Imagem principal + miniaturas */}
@@ -67,74 +118,88 @@ const ProductDetails = () => {
             ))}
           </div>
         </div>
+
         {/* Informações do produto */}
         <div>
           <h1 className="text-2xl font-bold mb-2">{produto.title}</h1>
-          <p className="text-sm text-gray-500 mb-2">
+          <p className="text-sm text-light-gray mb-2">
             Casual | Nike | REF: 3846111
           </p>
           <div className="flex items-center gap-2 mb-4">
             <div className="text-yellow-500">★★★★★</div>
-            <span className="text-sm font-bold text-orange-500">4.7</span>
-            <span className="text-sm text-gray-500">(90 avaliações)</span>
+            <span className="text-sm font-bold text-warning">4.7</span>
+            <span className="text-sm text-light-gray">(90 avaliações)</span>
           </div>
           <div className="flex items-center gap-3 mb-4">
             <span className="text-2xl font-bold text-black">
-              R$ {produto.currentPrice}
+              R$ {produto.currentPrice.toFixed(2).replace(".", ",")}
             </span>
-            <span className="line-through text-gray-400 text-base">
-              {produto.previousPrice}
+            <span className="line-through text-dark-gray-2 text-base">
+              R$ {produto.previousPrice.toFixed(2).replace(".", ",")}
             </span>
           </div>
+
           {/* Descrição */}
           <h2 className="font-semibold text-sm mb-1">Descrição do produto</h2>
-          <p className="text-sm text-gray-600 mb-6">
+          <p className="text-sm text-light-gray mb-6">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
+
           {/* Tamanhos */}
           <div className="mb-4">
             <h3 className="text-sm font-semibold mb-1">Tamanho</h3>
-            <div className="flex gap-2">
-              {[39, 40, 42, 43].map((size) => (
+            <div className="flex gap-2 flex-wrap">
+              {sizes.map((size) => (
                 <button
                   key={size}
-                  className="px-4 py-2 border border-gray-300 rounded-md text-sm hover:border-black"
+                  onClick={() => setSelectedSize(size)}
+                  className={`px-4 py-2 border rounded-md text-sm transition-colors ${
+                    selectedSize === size
+                      ? "border-primary bg-primary text-white"
+                      : "border-light-gray-2 hover:border-black"
+                  }`}
                 >
                   {size}
                 </button>
               ))}
             </div>
           </div>
+
           {/* Cores */}
           <div className="mb-6">
-            <h3 className="text-sm font-semibold mb-1">Tamanho</h3>
+            <h3 className="text-sm font-semibold mb-1">Cor</h3>
             <div className="flex gap-2">
-              {[
-                "bg-pink-400",
-                "bg-cyan-500",
-                "bg-purple-600",
-                "bg-gray-800",
-              ].map((color, i) => (
-                <div
+              {colors.map((color, i) => (
+                <button
                   key={i}
-                  className={`${color} w-6 h-6 rounded-full border-2 border-white hover:ring-2 ring-black cursor-pointer`}
+                  onClick={() => setSelectedColor(i)}
+                  className={`${
+                    color.class
+                  } w-8 h-8 rounded-full border-2 border-white cursor-pointer transition-all ${
+                    selectedColor === i
+                      ? "ring-2 ring-primary ring-offset-2"
+                      : "hover:ring-2 ring-black ring-offset-1"
+                  }`}
+                  title={color.name}
                 />
               ))}
             </div>
           </div>
+
           {/* Botão Comprar */}
           <ButtonPrimary
-            className="bg-yellow-1 hover:bg-lime-300"
-            onClick={() => {}}
+            className="bg-yellow-1 hover:bg-yellow-3 text-white text-sm font-bold py-2 px-4 rounded-lg"
+            onClick={handleAddToCart}
           >
             COMPRAR
           </ButtonPrimary>
         </div>
       </div>
+
       <div className="flex justify-between items-center mb-6">
         <span className="text-2xl font-bold text-dark-gray-2">
-          Produtos Ralacionados
+          Produtos Relacionados
         </span>
         <span
           onClick={handleClick}

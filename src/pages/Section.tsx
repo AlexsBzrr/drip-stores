@@ -280,7 +280,7 @@ const Section: React.FC = () => {
               className="w-full border p-2 rounded"
               required
             />
-            <small className="text-gray-500">
+            <small className="text-light-gray">
               Gerado automaticamente do nome
             </small>
           </div>
@@ -378,7 +378,7 @@ const Section: React.FC = () => {
             {product.category_ids.map((category, index) => (
               <div
                 key={index}
-                className="bg-gray-100 px-3 py-1 rounded-full flex items-center"
+                className="bg-light-gray-3 px-3 py-1 rounded-full flex items-center"
               >
                 <span>Categoria {category}</span>
                 <button

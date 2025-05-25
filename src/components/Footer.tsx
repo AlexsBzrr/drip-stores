@@ -28,9 +28,9 @@ const Footer = () => {
         </div>
       </div>
 
-      <hr className="my-6 border-gray-600" />
+      <hr className="my-6 border-dark-gray-3" />
       <div className="text-white text-xs md:text-sm text-center">
-        © 2022 Digital College
+        © 2025 Digital College
       </div>
     </footer>
   );

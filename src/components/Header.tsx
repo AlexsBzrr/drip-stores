@@ -1,12 +1,18 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import ButtonPrimary from "./buttons/ButtonPrimary";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../store";
+import { toast } from "react-toastify";
+import CartDropdown from "./CartDropdown";
+import { toggleCart } from "../store/slices/cartSlice";
 
 const logo = "/images/logo.svg";
 const search = "/images/search.svg";
 const searchPink = "/images/search_pink.svg";
 const carrinho = "/images/mini-cart.svg";
 const menu = "/images/menu.svg";
+const account = "/images/account.svg";
 
 const NavItem = ({
   to,
@@ -33,12 +39,38 @@ const NavItem = ({
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
+  const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const isLoginRoute = location.pathname === "/login";
+
+  // Ref para o dropdown do perfil
+  const profileDropdownRef = useRef<HTMLDivElement>(null);
+
+  const user = useSelector((state: RootState) => state.user);
+  const { totalItems } = useSelector((state: RootState) => state.cart);
+
+  // useEffect para fechar o dropdown quando clicar fora
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        profileDropdownRef.current &&
+        !profileDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsProfileMenuOpen(false);
+      }
+    };
+
+    if (isProfileMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isProfileMenuOpen]);
 
   const handleSearch = () => {
     if (searchTerm.trim() !== "") {
@@ -50,8 +82,21 @@ const Header = () => {
     if (e.key === "Enter") handleSearch();
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem("nome");
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("isLoged");
+    toast.success("Logout efetuado com sucesso!");
+    navigate("/login", { replace: true });
+    setIsProfileMenuOpen(false);
+  };
+
+  const handleCartToggle = () => {
+    dispatch(toggleCart());
+  };
+
   const handleClick = () => navigate("/login");
-  const handleClickCadastro = () => navigate("/cadastro");
+  const handleClickCadastro = () => navigate("/criarConta");
   const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
@@ -70,7 +115,7 @@ const Header = () => {
 
   return (
     <div className="w-full bg-white shadow-sm relative z-50">
-      <div className="container mx-auto px-4 md:px-8 lg:px-24">
+      <div className="container mx-auto px-4 md:px-8 lg:px-12">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <button className="md:hidden mr-4" onClick={toggleMobileMenu}>
@@ -82,13 +127,12 @@ const Header = () => {
               alt="Digital Store"
             />
           </div>
-
           {!isLoginRoute && (
             <>
               {/* Campo de busca (desktop) */}
               {!isMobile && (
                 <div className="flex items-center flex-1 max-w-xl mx-8">
-                  <div className="flex items-center w-full bg-gray-100 rounded-lg relative">
+                  <div className="flex items-center w-full bg-light-gray-3 rounded-lg relative">
                     <input
                       className="flex-1 py-2 px-4 bg-transparent outline-none"
                       type="text"
@@ -117,23 +161,84 @@ const Header = () => {
                   />
                 </button>
 
+                {/* Carrinho */}
                 <div className="relative">
-                  <button className="mr-1 md:mr-6">
+                  <button
+                    className="mr-1 md:mr-6 relative"
+                    onClick={handleCartToggle}
+                  >
                     <img className="w-6 md:w-7" src={carrinho} alt="Carrinho" />
+                    {totalItems > 0 && (
+                      <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+                        {totalItems > 99 ? "99+" : totalItems}
+                      </span>
+                    )}
                   </button>
+                  <CartDropdown />
                 </div>
 
                 {/* Entrar / Cadastre-se (desktop) */}
-                <div className="hidden md:flex items-center">
+                <div
+                  className={`${
+                    user.token || isMobile ? "hidden" : ""
+                  }  items-center>`}
+                >
                   <button
                     onClick={handleClickCadastro}
-                    className="mr-6 text-gray-700 hover:text-gray-900"
+                    className="mr-6 text-dark-gray-2 hover:text-dark-gray"
                   >
                     Cadastre-se
                   </button>
                   <ButtonPrimary onClick={handleClick} className="px-6 py-2">
                     Entrar
                   </ButtonPrimary>
+                </div>
+
+                {/* Dropdown do Perfil */}
+                <div className="relative" ref={profileDropdownRef}>
+                  <button
+                    onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
+                    className={`${
+                      !user.token || isMobile ? "hidden" : ""
+                    } flex items-center gap-1 hover:text-primary transition-colors cursor-pointer pl-3`}
+                  >
+                    <img src={account} alt="account" />
+                    <span>Olá, {user.nome}</span>
+                    <svg
+                      className={`w-4 h-4 transition-transform ${
+                        isProfileMenuOpen ? "rotate-180" : ""
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+
+                  {isProfileMenuOpen && (
+                    <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg border z-50">
+                      <ul className="flex flex-col text-sm text-dark-gray-3">
+                        <li className="px-4 py-2 hover:bg-light-gray-3 cursor-pointer">
+                          Minhas informações
+                        </li>
+                        <li className="px-4 py-2 hover:bg-light-gray-3 cursor-pointer">
+                          Metodos de Pagamento
+                        </li>
+
+                        <hr className="my-1" />
+                        <li
+                          onClick={handleLogout}
+                          className="px-4 py-2 text-red-500 hover:bg-light-gray-3 cursor-pointer"
+                        >
+                          <ButtonPrimary className="w-full">
+                            Sair da Conta
+                          </ButtonPrimary>
+                        </li>
+                      </ul>
+                    </div>
+                  )}
                 </div>
               </div>
             </>
@@ -143,11 +248,11 @@ const Header = () => {
         {/* Busca Mobile */}
         {isSearchOpen && !isLoginRoute && (
           <div className="md:hidden w-full px-4 py-2 bg-white shadow-sm z-40">
-            <div className="flex items-center bg-gray-100 rounded-lg overflow-hidden">
+            <div className="flex items-center bg-dark-gray-3 rounded-lg overflow-hidden">
               <input
                 type="text"
                 placeholder="Pesquisar produto..."
-                className="flex-1 py-2 px-4 bg-transparent outline-none text-sm text-gray-700"
+                className="flex-1 py-2 px-4 bg-transparent outline-none text-sm text-dark-gray-3"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -163,7 +268,7 @@ const Header = () => {
       {/* Navegação desktop */}
       {!isLoginRoute && (
         <nav className="hidden md:flex w-full h-20 justify-start pl-24 bg-white">
-          <ul className="flex justify-between gap-x-6 items-center">
+          <ul className="flex justify-between gap-x-6 items-center ">
             <li>
               <NavItem to="/home" label="Home" />
             </li>
@@ -190,6 +295,20 @@ const Header = () => {
             >
               ✕
             </button>
+            <div
+              className={`${
+                !user.token ? "hidden" : ""
+              }  gap-2 flex flex-col justify-start `}
+            >
+              <span className="text-lg font-semibold">Olá, {user.nome}</span>
+              <span>Minhas Informações</span>
+              <span>Métodos de Pagamento</span>
+              <ButtonPrimary onClick={handleLogout} className="px-6 py-2 mt-4">
+                Sair da Conta
+              </ButtonPrimary>
+              <hr className="my-8 bg-light-gray" />
+            </div>
+
             <p className="text-lg font-semibold mb-4">Páginas</p>
             <ul className="flex flex-col gap-4 text-base">
               <li>
@@ -218,13 +337,17 @@ const Header = () => {
               </li>
             </ul>
             <hr className="my-8 bg-light-gray" />
-            <div className="mt-10 flex flex-col gap-4">
+            <div
+              className={`${
+                user.token ? "hidden" : ""
+              } mt-10 flex flex-col gap-4`}
+            >
               <ButtonPrimary onClick={handleClick} className="w-full mb-2">
                 Entrar
               </ButtonPrimary>
               <button
                 onClick={handleClickCadastro}
-                className="mr-6 text-gray-700 hover:text-gray-900"
+                className="mr-6 text-dark-gray-2 hover:text-dark-gray"
               >
                 Cadastre-se
               </button>

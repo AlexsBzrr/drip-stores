@@ -6,6 +6,9 @@ import NotFound from "../pages/NotFound";
 import Login from "../modules/auth/pages/Login";
 import ProductDetails from "../pages/ProductDetails";
 import Registration from "../modules/auth/pages/Registration";
+import CreateAccount from "../modules/auth/pages/CreateAccount";
+import PrivateRoute from "./PrivateRoute";
+import MyOrders from "../pages/MyOrders";
 
 function PathsContainer() {
   return (
@@ -15,6 +18,7 @@ function PathsContainer() {
 
       {/* Rotas Usuários*/}
       <Route path="/cadastro" element={<Registration />} />
+      <Route path="/criarConta" element={<CreateAccount />} />
 
       {/* Rotas sem proteção */}
       <Route element={<PagesLayout />}>
@@ -23,7 +27,15 @@ function PathsContainer() {
         <Route path="/produtos" element={<ProductListing />} />
         <Route path="/produtos/:id" element={<ProductDetails />} />
         <Route path="/categorias" element={<NotFound />} />
-        <Route path="/meusPedidos" element={<NotFound />} />
+        {/* Rotas com proteção */}
+        <Route
+          path="/meusPedidos"
+          element={
+            <PrivateRoute>
+              <MyOrders />
+            </PrivateRoute>
+          }
+        />
       </Route>
 
       {/* Rota para "not found" */}

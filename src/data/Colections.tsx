@@ -1,4 +1,7 @@
-import { IProductDetails } from "../interfaces/productsDetails.interface";
+import {
+  IOrders,
+  IProductDetails,
+} from "../interfaces/productsDetails.interface";
 
 const tenis = "/images/newtenis6.png";
 const tenis2 = "/images/tenis2.svg";
@@ -8,6 +11,13 @@ const tenis5 = "/images/newtenis3.png";
 const tenis6 = "/images/newtenis4.png";
 const tenis7 = "/images/newtenis2.png";
 const tenis8 = "/images/tenis8.svg";
+const tenis9 = "/images/newtenis6.png";
+const tenis10 = "/images/tenis2.svg";
+const tenis11 = "/images/newtenis.png";
+const tenis12 = "/images/newtenis5.png";
+const tenis13 = "/images/newtenis3.png";
+const tenis14 = "/images/newtenis4.png";
+const tenis15 = "/images/newtenis2.png";
 
 export const collections: IProductDetails[] = [
   {
@@ -15,8 +25,8 @@ export const collections: IProductDetails[] = [
     discount: "25% OFF",
     image: tenis,
     description: "Tênis Air Nike",
-    currentPrice: "R$ 139,90",
-    previousPrice: "R$ 199,90",
+    currentPrice: 139,
+    previousPrice: 199,
     title: "Tênis",
   },
   {
@@ -24,8 +34,8 @@ export const collections: IProductDetails[] = [
     discount: "30% OFF",
     image: tenis2,
     description: "Tênis Nike Revolution 6",
-    currentPrice: "R$ 159,90",
-    previousPrice: "R$ 229,90",
+    currentPrice: 159,
+    previousPrice: 229,
     title: "Tênis",
   },
   {
@@ -33,8 +43,8 @@ export const collections: IProductDetails[] = [
     discount: "",
     image: tenis3,
     description: "Tênis Nike Gel Excite 9",
-    currentPrice: "R$ 189,00",
-    previousPrice: "R$ 269,00",
+    currentPrice: 189,
+    previousPrice: 269,
     title: "Tênis",
   },
   {
@@ -42,8 +52,8 @@ export const collections: IProductDetails[] = [
     discount: "35% OFF",
     image: tenis4,
     description: "Tênis Nike Runner",
-    currentPrice: "R$ 149,50",
-    previousPrice: "R$ 214,30",
+    currentPrice: 149.5,
+    previousPrice: 214.3,
     title: "Tênis",
   },
   {
@@ -51,8 +61,8 @@ export const collections: IProductDetails[] = [
     discount: "",
     image: tenis5,
     description: "Tênis Nike Racer Movel",
-    currentPrice: "R$ 179,99",
-    previousPrice: "R$ 259,99",
+    currentPrice: 179,
+    previousPrice: 259,
     title: "Tênis",
   },
   {
@@ -60,8 +70,8 @@ export const collections: IProductDetails[] = [
     discount: "33% OFF",
     image: tenis6,
     description: "Tênis Nike Dynasty",
-    currentPrice: "R$ 169,90",
-    previousPrice: "R$ 239,90",
+    currentPrice: 169,
+    previousPrice: 239.9,
     title: "Tênis",
   },
   {
@@ -69,8 +79,8 @@ export const collections: IProductDetails[] = [
     discount: "30% OFF",
     image: tenis7,
     description: "Tênis Nike Flexagon",
-    currentPrice: "R$ 134,75",
-    previousPrice: "R$ 192,50",
+    currentPrice: 134.75,
+    previousPrice: 192.5,
     title: "Tênis",
   },
   {
@@ -78,8 +88,110 @@ export const collections: IProductDetails[] = [
     discount: "20% OFF",
     image: tenis8,
     description: "Tênis Nike Jordan",
-    currentPrice: "R$ 209,90",
-    previousPrice: "R$ 299,90",
+    currentPrice: 209.9,
+    previousPrice: 259.9,
     title: "Tênis",
+  },
+  {
+    id: 9,
+    discount: "25% OFF",
+    image: tenis9,
+    description: "Tênis Nike Air Force",
+    currentPrice: 139,
+    previousPrice: 199,
+    title: "Tênis",
+  },
+  {
+    id: 10,
+    discount: "30% OFF",
+    image: tenis10,
+    description: "Tênis Nike Revolution 6",
+    currentPrice: 159,
+    previousPrice: 229,
+    title: "Tênis",
+  },
+  {
+    id: 11,
+    discount: "",
+    image: tenis11,
+    description: "Tênis Nike Gel Excite 9",
+    currentPrice: 189,
+    previousPrice: 269,
+    title: "Tênis",
+  },
+  {
+    id: 12,
+    discount: "35% OFF",
+    image: tenis12,
+    description: "Tênis Nike Runner",
+    currentPrice: 149.5,
+    previousPrice: 214.3,
+    title: "Tênis",
+  },
+  {
+    id: 13,
+    discount: "",
+    image: tenis13,
+    description: "Tênis Nike Racer Movel",
+    currentPrice: 179.99,
+    previousPrice: 259.99,
+    title: "Tênis",
+  },
+  {
+    id: 14,
+    discount: "33% OFF",
+    image: tenis14,
+    description: "Tênis Nike Dynasty",
+    currentPrice: 169,
+    previousPrice: 239.9,
+    title: "Tênis",
+  },
+  {
+    id: 15,
+    discount: "30% OFF",
+    image: tenis15,
+    description: "Tênis Nike Flexagon",
+    currentPrice: 134.75,
+    previousPrice: 192.5,
+    title: "Tênis",
+  },
+];
+
+export const orders: IOrders[] = [
+  {
+    id: "2234981932",
+    product: "Tênis Nike Revolution 6 Next Nature Masculino",
+    status: "Produto em trânsito",
+    image: tenis,
+  },
+  {
+    id: "4495810492",
+    product: "Tênis Nike Revolution 6 Next Nature Masculino",
+    status: "Finalizado",
+    image: tenis2,
+  },
+  {
+    id: "4495810492",
+    product: "Tênis Nike Revolution 6 Next Nature Masculino",
+    status: "Cancelado",
+    image: tenis3,
+  },
+  {
+    id: "4495810492",
+    product: "Tênis Nike Revolution 6 Next Nature Masculino",
+    status: "Finalizado",
+    image: tenis4,
+  },
+  {
+    id: "4495810492",
+    product: "Tênis Nike Revolution 6 Next Nature Masculino",
+    status: "Finalizado",
+    image: tenis5,
+  },
+  {
+    id: "4495810492",
+    product: "Tênis Nike Revolution 6 Next Nature Masculino",
+    status: "Finalizado",
+    image: tenis6,
   },
 ];

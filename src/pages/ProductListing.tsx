@@ -24,11 +24,11 @@ const ProductListing = () => {
       </aside>
       {/* Mobile */}
       {showMobileFilter && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 lg:hidden">
+        <div className="fixed inset-0 bg-dark-gray bg-opacity-50 z-50 lg:hidden">
           <div className="bg-white h-full w-80 max-w-full flex flex-col overflow-y-auto">
             <div className="flex justify-between items-center p-4 border-b">
               <h3 className="font-semibold">Filtrar por</h3>
-              <button onClick={toggleMobileFilter} className="text-gray-500">
+              <button onClick={toggleMobileFilter} className="text-light-gray">
                 <span className="text-3xl">×</span>
               </button>
             </div>
@@ -44,7 +44,7 @@ const ProductListing = () => {
         <div className="flex flex-col sm:flex-row-reverse sm:justify-between sm:items-center mb-6 gap-4">
           <div className="flex items-center gap-2">
             <div className="relative w-full sm:w-auto">
-              <select className="appearance-none border border-gray-300 rounded px-4 py-2 pr-8 text-sm text-gray-700 bg-white w-full">
+              <select className="appearance-none border border-light-gray-3 rounded px-4 py-2 pr-8 text-sm text-dark-gray-3 bg-white w-full">
                 <option>Ordenar por: mais relevantes</option>
               </select>
             </div>
@@ -55,13 +55,13 @@ const ProductListing = () => {
               <img src={filter} className="w-8" alt="Filter" />
             </button>
           </div>
-          <h2 className="text-base text-center text-gray-800">
+          <h2 className="text-base text-center text-dark-gray-3">
             Resultados para <strong>"Tênis"</strong> –{" "}
             <span className="font-normal">389 produtos</span>
           </h2>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6">
-          {collections.slice(0, 6).map((item) => (
+          {collections.slice(0, 15).map((item) => (
             <div
               key={item.id}
               onClick={() => handleClick(item.id)}

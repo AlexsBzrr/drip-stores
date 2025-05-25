@@ -33,7 +33,7 @@ const ColecoesDestaque = () => {
         {collections.map((collection, index) => (
           <div
             key={index}
-            className="flex flex-col items-center justify-center rounded-full shadow-md p-4 bg-white w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 transition-all duration-200"
+            className="flex flex-col items-center justify-center rounded-full shadow-md p-4 bg-white w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 transition-all duration-200 cursor-pointer"
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >

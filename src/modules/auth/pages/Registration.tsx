@@ -1,13 +1,20 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
-import { IRegistration } from "./data/registration.interface";
+import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
+import { INewRegistration } from "./data/registration.interface";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const Registration: React.FC = () => {
-  const [formData, setFormData] = useState<IRegistration>({
+  const location = useLocation();
+  const navigate = useNavigate();
+  const emailRecebido = location.state?.email ?? "";
+
+  const [formData, setFormData] = useState<INewRegistration>({
     nome: "",
+    email: "",
     password: "",
     cpf: "",
-    email: "",
-    celular: "",
+    telefone: "",
     endereco: "",
     bairro: "",
     cidade: "",
@@ -15,6 +22,15 @@ const Registration: React.FC = () => {
     complemento: "",
     aceitaOfertas: false,
   });
+
+  useEffect(() => {
+    if (emailRecebido) {
+      setFormData((prev) => ({
+        ...prev,
+        email: emailRecebido,
+      }));
+    }
+  }, [emailRecebido]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
@@ -24,20 +40,68 @@ const Registration: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmitForm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Dados enviados:", JSON.stringify(formData));
-    // Aqui você pode chamar sua API
+    const { aceitaOfertas, ...payload } = formData;
+    if (aceitaOfertas) {
+      // Adicionar aceitaOfertas ao payload
+    }
+
+    axios
+      .post("http://localhost:3300/api/clientes", JSON.stringify(payload), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        if (response.status === 201) {
+          toast.success("Cadastro efetuado com sucesso!");
+          navigate("/login", { replace: true });
+        }
+      })
+      .catch((error) => {
+        toast.error(error.response.data.error || "Erro ao cadastrar!");
+      });
+
+    setFormData({
+      nome: "",
+      email: "",
+      password: "",
+      cpf: "",
+      telefone: "",
+      endereco: "",
+      bairro: "",
+      cidade: "",
+      cep: "",
+      complemento: "",
+      aceitaOfertas: false,
+    });
   };
 
   return (
-    <div className="max-w-xl mx-auto mt-8 p-6 bg-gray-50 rounded-md shadow-md">
+    <div className="max-w-xl mx-auto mt-8 p-6 bg-light-gray-3 rounded-md shadow-md">
       <h1 className="text-2xl font-bold mb-6 text-center">Criar Conta</h1>
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmitForm} className="space-y-6">
         {/* Informações Pessoais */}
         <div className="space-y-4">
           <h2 className="text-lg font-semibold">Informações Pessoais</h2>
 
+          <div className="flex flex-col">
+            <label className="text-sm mb-1" htmlFor="email">
+              E-mail
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Insira seu email"
+              value={formData.email}
+              onChange={handleChange}
+              className="p-3 border border-light-gray-2 rounded text-light-gray-2"
+              required
+              readOnly
+            />
+          </div>
           <div className="flex flex-col">
             <label className="text-sm mb-1" htmlFor="nome">
               Nome Completo
@@ -49,7 +113,7 @@ const Registration: React.FC = () => {
               placeholder="Insira seu nome"
               value={formData.nome}
               onChange={handleChange}
-              className="p-3 border border-gray-300 rounded"
+              className="p-3 border border-light-gray-2 rounded"
               required
             />
           </div>
@@ -65,7 +129,7 @@ const Registration: React.FC = () => {
               placeholder="Crie uma senha"
               value={formData.password}
               onChange={handleChange}
-              className="p-3 border border-gray-300 rounded"
+              className="p-3 border border-light-gray-2 rounded"
               required
             />
           </div>
@@ -81,39 +145,23 @@ const Registration: React.FC = () => {
               placeholder="Insira seu CPF"
               value={formData.cpf}
               onChange={handleChange}
-              className="p-3 border border-gray-300 rounded"
+              className="p-3 border border-light-gray-2 rounded"
               required
             />
           </div>
 
           <div className="flex flex-col">
-            <label className="text-sm mb-1" htmlFor="email">
-              E-mail
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Insira seu email"
-              value={formData.email}
-              onChange={handleChange}
-              className="p-3 border border-gray-300 rounded"
-              required
-            />
-          </div>
-
-          <div className="flex flex-col">
-            <label className="text-sm mb-1" htmlFor="celular">
-              Celular
+            <label className="text-sm mb-1" htmlFor="telefone">
+              Telefone
             </label>
             <input
               type="text"
-              id="celular"
-              name="celular"
-              placeholder="Insira seu celular"
-              value={formData.celular}
+              id="telefone"
+              name="telefone"
+              placeholder="Insira seu telefone"
+              value={formData.telefone}
               onChange={handleChange}
-              className="p-3 border border-gray-300 rounded"
+              className="p-3 border border-light-gray-2 rounded"
               required
             />
           </div>
@@ -134,7 +182,7 @@ const Registration: React.FC = () => {
               placeholder="Insira seu endereço"
               value={formData.endereco}
               onChange={handleChange}
-              className="p-3 border border-gray-300 rounded"
+              className="p-3 border border-light-gray-2 rounded"
               required
             />
           </div>
@@ -150,7 +198,7 @@ const Registration: React.FC = () => {
               placeholder="Insira seu bairro"
               value={formData.bairro}
               onChange={handleChange}
-              className="p-3 border border-gray-300 rounded"
+              className="p-3 border border-light-gray-2 rounded"
               required
             />
           </div>
@@ -166,7 +214,7 @@ const Registration: React.FC = () => {
               placeholder="Insira sua cidade"
               value={formData.cidade}
               onChange={handleChange}
-              className="p-3 border border-gray-300 rounded"
+              className="p-3 border border-light-gray-2 rounded"
               required
             />
           </div>
@@ -182,7 +230,7 @@ const Registration: React.FC = () => {
               placeholder="Insira seu CEP"
               value={formData.cep}
               onChange={handleChange}
-              className="p-3 border border-gray-300 rounded"
+              className="p-3 border border-light-gray-2 rounded"
               required
             />
           </div>
@@ -198,7 +246,7 @@ const Registration: React.FC = () => {
               placeholder="Insira complemento"
               value={formData.complemento}
               onChange={handleChange}
-              className="p-3 border border-gray-300 rounded"
+              className="p-3 border border-light-gray-2 rounded"
             />
           </div>
         </div>
@@ -213,7 +261,7 @@ const Registration: React.FC = () => {
             onChange={handleChange}
             className="mt-1"
           />
-          <label htmlFor="aceitaOfertas" className="text-sm text-gray-700">
+          <label htmlFor="aceitaOfertas" className="text-sm text-dark-gray-2">
             Quero receber por email ofertas e novidades das lojas da Digital
             Store.
           </label>

@@ -44,7 +44,7 @@ const ProductOffering = () => {
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-dark-gray">
             {oferta.headline}
           </h2>
-          <p className="text-sm md:text-base leading-6 text-gray-700">
+          <p className="text-sm md:text-base leading-6 text-dark-gray-2">
             {oferta.description}
           </p>
           <ButtonPrimary className="w-full sm:w-56 h-12 mt-4">

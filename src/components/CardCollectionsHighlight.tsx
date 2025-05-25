@@ -29,10 +29,6 @@ const collections = [
 ];
 
 const CardColecoesDestaque = () => {
-  const handleClick = (id: number) => {
-    console.log(id);
-  };
-
   return (
     <div className="flex flex-col items-center justify-center px-4 md:px-24 pb-6">
       <h2 className="text-xl md:text-2xl leading-9 text-dark-gray-2 font-bold pt-10 pb-8 text-center md:text-left">
@@ -53,12 +49,7 @@ const CardColecoesDestaque = () => {
                 <h3 className="text-xl md:text-3xl leading-9 text-dark-gray-2 font-bold mt-3">
                   {collection.description}
                 </h3>
-                <ButtonSecondary
-                  onClick={() => handleClick(collection.id)}
-                  className="mt-6"
-                >
-                  Comprar
-                </ButtonSecondary>
+                <ButtonSecondary className="mt-6">Comprar</ButtonSecondary>
               </div>
             </div>
             <img

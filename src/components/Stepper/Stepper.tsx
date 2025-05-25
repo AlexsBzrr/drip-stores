@@ -69,13 +69,13 @@ const Stepper = () => {
         <div className="flex flex-col md:flex-row md:items-center px-4 md:px-8 lg:px-16 relative">
           {/* Text content */}
           <div className="flex flex-col gap-2 md:gap-4 items-start justify-center w-full md:w-1/2 py-6 md:py-12 order-2 md:order-1">
-            <span className="text-sm md:text-base text-pink-600 font-bold">
+            <span className="text-sm md:text-base text-warning font-bold">
               {step.title}
             </span>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-extrabold leading-tight">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl text-dark-gray font-extrabold leading-tight">
               {step.headline}
             </h2>
-            <p className="text-sm md:text-base lg:text-lg font-normal mb-4 md:mb-6">
+            <p className="text-sm md:text-base lg:text-lg font-normal text-dark-gray-2 mb-4 md:mb-6">
               {step.description}
             </p>
             <ButtonPrimary className="w-full md:w-56 py-3 md:py-4">
@@ -102,7 +102,7 @@ const Stepper = () => {
         <button
           onClick={handlePrev}
           disabled={currentStep === 0}
-          className="hidden md:block absolute left-2 lg:left-4 top-1/2 transform -translate-y-1/2 text-3xl font-bold text-gray-500 hover:text-gray-800 disabled:opacity-30"
+          className=" absolute top-1/4  md:top-1/2 left-2 lg:left-4  transform -translate-y-1/2 text-3xl font-bold text-light-gray-2 hover:text-light-gray disabled:opacity-30"
         >
           <img className="w-8 md:w-10 lg:w-12" src={prev} alt="Anterior" />
         </button>
@@ -110,7 +110,7 @@ const Stepper = () => {
         <button
           onClick={handleNext}
           disabled={currentStep === steps.length - 1}
-          className="hidden md:block absolute right-2 lg:right-4 top-1/2 transform -translate-y-1/2 text-3xl font-bold text-gray-500 hover:text-gray-800 disabled:opacity-30"
+          className=" absolute right-2 lg:right-4 top-1/4  md:top-1/2  transform -translate-y-1/2 text-3xl font-bold text-light-gray-2 hover:text-light-gray disabled:opacity-30"
         >
           <img className="w-8 md:w-10 lg:w-12" src={next} alt="Próximo" />
         </button>
@@ -123,7 +123,7 @@ const Stepper = () => {
             key={index}
             onClick={() => setCurrentStep(index)}
             className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
-              index === currentStep ? "bg-pink-600" : "bg-gray-200"
+              index === currentStep ? "bg-primary" : "bg-light-gray-2"
             }`}
             aria-label={`Ir para slide ${index + 1}`}
           ></button>
