@@ -8,7 +8,7 @@ const NotFound = () => {
       </button>
       <span
         style={{ fontSize: "2.5rem" }}
-        className=" text-primary text-9xl font-bold"
+        className=" text-primary text-9xl font-bold text-center"
       >
         404 - Página não encontrada
       </span>

@@ -1,63 +1,43 @@
-import logo from "/images/logo-white.svg";
-import facebook from "/images/face.svg";
-import instagram from "/images/insta.svg";
-import twitter from "/images/x.svg";
+import logo from "../assets/images/logo-white.svg";
+import facebook from "../assets/images/face.svg";
+import instagram from "../assets/images/insta.svg";
+import twitter from "../assets/images/x.svg";
+import Informations from "./Informations";
 
 const Footer = () => {
   return (
-    <footer className="w-full h-96 bg-dark-gray pl-24 pr-24 ">
-      <div className="grid grid-cols-10 gap-8">
-        <div className="col-span-4  pt-6 w-72">
-          <span className="flex justify-center pb-9">
-            <img className="w-64 h-10" src={logo} alt="Logo Digital Store" />
-          </span>
-          <p className="text-white text-base text-justify leading-7">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore.
-          </p>
-          <span className="flex justify-start gap-x-8 pt-10">
-            <img src={facebook} alt="Logo Facebook" />
-            <img src={instagram} alt="Logo Instagram" />
-            <img src={twitter} alt="LogoTwitter" />
-          </span>
+    <footer className="w-full  mx-auto px-4 sm:px-6 lg:px-8 bg-dark-gray ">
+      <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:grid lg:grid-cols-10 gap-8">
+          <div className="lg:col-span-4 flex flex-col items-start lg:items-center text-white max-w-md">
+            <span className="py-8">
+              <img
+                className="w-40 md:w-48"
+                src={logo}
+                alt="Logo Digital Store"
+              />
+            </span>
+            <p className="text-sm md:text-base leading-6 md:leading-7 text-justify">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore.
+            </p>
+            <span className="flex gap-6 pt-6">
+              <img src={facebook} alt="Facebook" />
+              <img src={instagram} alt="Instagram" />
+              <img src={twitter} alt="Twitter" />
+            </span>
+          </div>
+
+          <div className="lg:col-span-6 text-white py-8 lg:py-6">
+            <Informations />
+          </div>
         </div>
-        <div className="col-span-2 text-white text-base w-36 pt-6">
-          <h2 className="text-lg font-semibold pb-7">Informação</h2>
-          <ul className="text-white text-base font-normal leading-9">
-            <li>Sobre DripStore</li>
-            <li>Segurança</li>
-            <li>Wishlist</li>
-            <li>Blog</li>
-            <li>Trabalhe conosco</li>
-            <li> Meus Pedidos</li>
-          </ul>
-        </div>
-        <div className="col-span-2 text-white text-base w-36 pt-6">
-          <h2 className="text-lg font-semibold pb-7">Categorias</h2>
-          <ul className="text-white text-base font-normal leading-9">
-            <li>Sobre DripStore</li>
-            <li>Segurança</li>
-            <li>Wishlist</li>
-            <li>Blog</li>
-            <li>Trabalhe conosco</li>
-            <li> Meus Pedidos</li>
-          </ul>
-        </div>
-        <div className="col-span-2 text-white text-base w-36 pt-6">
-          <h2 className="text-lg font-semibold pb-7">Contato</h2>
-          <ul className="text-white text-base font-normal leading-9">
-            <li>
-              Av. Santos Dumont, 1510 - 1 andar - Aldeota, Fortaleza - CE,
-              60150-161
-            </li>
-            <li>(85) 3051-3411</li>
-          </ul>
+
+        <hr className="w-full  pt-6 border-dark-gray-3" />
+        <div className="text-white text-xs md:text-sm flex  justify-center items-center">
+          <span className="pb-5">© 2025 Digital College</span>
         </div>
       </div>
-      <hr className="mt-8" />
-      <span className="flex justify-center text-white text-sm pt-4">
-        © 2022 Digital Store
-      </span>
     </footer>
   );
 };

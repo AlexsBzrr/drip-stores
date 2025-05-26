@@ -1,22 +1,36 @@
-// import { createContext, useState } from 'react';
+import { createContext, useContext, useState, ReactNode } from "react";
 
-// interface AuthContext {
-//   setIsLoged: (isLoged: boolean) => void;
-//   // other properties or methods
-// }
+interface AuthContextType {
+  isLoged: boolean;
+  setIsLoged: (isLoged: boolean) => void;
+}
 
-// export const Context = createContext({
-//   isLoged: true,
-//   setIsLoged: (value: boolean) => {},
-// });
+const Context = createContext<AuthContextType | undefined>(undefined);
 
-// export const AuthContext: React.FC<PropsWithChildren<{}>> = ({ children }) => {
-//   const [isLoged, setIsLoged] = useState(true);
-//   return (
-//     <>
-//       <Context.Provider value={{ isLoged, setIsLoged }}>
-//         {children}
-//       </Context.Provider>
-//     </>
-//   );
-// };
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const [isLoged, setIsLogedState] = useState<boolean>(() => {
+    const stored = sessionStorage.getItem("isLoged");
+    return stored === "true"; // transforma string em boolean
+  });
+
+  const setIsLoged = (value: boolean) => {
+    setIsLogedState(value);
+    sessionStorage.setItem("isLoged", value.toString());
+  };
+
+  return (
+    <Context.Provider value={{ isLoged, setIsLoged }}>
+      {children}
+    </Context.Provider>
+  );
+};
+
+export const useAuth = () => {
+  const context = useContext(Context);
+  if (!context) {
+    throw new Error("useAuth deve ser usado dentro de AuthProvider");
+  }
+  return context;
+};
+
+export default { AuthProvider, useAuth };

@@ -4,7 +4,7 @@ interface ButtonProps {
   className?: string;
 }
 
-const Buttonsecondary: React.FC<ButtonProps> = ({
+const ButtonSecondary: React.FC<ButtonProps> = ({
   children,
   onClick,
   className,
@@ -19,4 +19,4 @@ const Buttonsecondary: React.FC<ButtonProps> = ({
   );
 };
 
-export default Buttonsecondary;
+export default ButtonSecondary;

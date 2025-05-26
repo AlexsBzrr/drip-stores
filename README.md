@@ -1,54 +1,123 @@
-# React + TypeScript + Vite
+# 🛍️ Drip Stores
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto front-end desenvolvido com foco em autenticação, cadastro de usuários e estrutura modular utilizando React + TypeScript.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📚 Sumário
 
-## Expanding the ESLint configuration
+- [📖 Visão Geral](#📖-visão-geral)
+- [🛠️ Tecnologias Utilizadas](#🛠️-tecnologias-utilizadas)
+- [📁 Estrutura de Pastas](#📁-estrutura-de-pastas)
+- [🚀 Como Rodar o Projeto](#🚀-como-rodar-o-projeto)
+- [📜 Scripts Disponíveis](#📜-scripts-disponíveis)
+- [✅ Boas Práticas](#✅-boas-práticas)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 📖 Visão Geral
+
+O **Drip Stores** é uma aplicação desenvolvida em React com Vite e TypeScript, que oferece funcionalidades de autenticação (login, cadastro) e estrutura modularizada por contexto (auth, store, utils, interfaces, etc). O projeto segue padrões modernos de desenvolvimento com Tailwind CSS para estilização e Redux Toolkit para gerenciamento de estado.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- ⚛️ React 19
+- 🔀 React Router DOM
+- 🎯 TypeScript
+- 🎨 Tailwind CSS
+- 📦 Redux Toolkit + React Redux
+- 🧼 ESLint
+- 📥 Axios
+- 🔐 React Hook Form + Input Mask
+- 🔔 React Toastify
+- 🌀 React Spinners
+- 🧠 Lucide Icons
+- ⚙️ Vite (dev/build tool)
+
+---
+
+## 📁 Estrutura de Pastas
+
+```
+src/
+├── assets/            # Imagens e recursos estáticos
+├── components/        # Componentes reutilizáveis
+├── contexts/          # Context API (se aplicável)
+├── data/              # Dados mockados, JSONs ou constantes
+├── interfaces/        # Tipagens e interfaces TypeScript
+├── layouts/           # Layouts principais da aplicação
+├── modules/           # Agrupamento por funcionalidades
+│   └── auth/          # Módulo de autenticação
+│       ├── data/      # Dados relacionados ao auth
+│       ├── Login.tsx
+│       ├── Registration.tsx
+│       └── CreateAccount.tsx
+├── pages/             # Páginas principais
+├── Routes/            # Definição das rotas da aplicação
+├── store/             # Configuração do Redux Store
+├── utils/             # Funções utilitárias
+├── App.tsx            # Componente principal
+├── main.tsx           # Ponto de entrada
+└── vite-env.d.ts      # Tipagens Vite
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Como Rodar o Projeto
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### Pré-requisitos:
+
+- Node.js (v18 ou superior)
+- npm
+
+### Passos:
+
+```bash
+# 1. Clonar o repositório
+git clone https://github.com/AlexsBzrr/drip-stores.git
+
+# 2. Acessar o diretório do projeto
+cd drip-stores
+
+# 3. Instalar as dependências
+npm install
+
+# 4. Rodar o projeto em modo desenvolvimento
+npm run dev
 ```
+
+---
+
+## 📜 Scripts Disponíveis
+
+| Comando           | Descrição                                   |
+| ----------------- | ------------------------------------------- |
+| `npm run dev`     | Inicia o servidor de desenvolvimento (Vite) |
+| `npm run build`   | Gera o build de produção                    |
+| `npm run lint`    | Executa o linter com ESLint                 |
+| `npm run preview` | Visualiza a build de produção localmente    |
+
+---
+
+## ✅ Boas Práticas
+
+- Componentes com nomes em `PascalCase`.
+- Funções e variáveis em `camelCase`.
+- Tipagens explícitas com TypeScript.
+- Uso de **Redux Toolkit** para gerenciamento de estado global.
+- **Tailwind CSS** como padrão de estilização.
+- Separação de módulos por domínio de funcionalidade (`modules/auth`, `modules/user`, etc).
+- Organização de tipos em `interfaces/`.
+
+---
+
+## 📫 Contato
+
+Desenvolvido por **Alex Bezerra**  
+📧 alex@email.com  
+🔗 [LinkedIn](https://linkedin.com/in/seu-perfil)  
+🔗 [GitHub](https://github.com/AlexsBzrr)
+
+---
