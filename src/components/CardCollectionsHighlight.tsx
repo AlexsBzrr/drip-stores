@@ -35,11 +35,11 @@ const CardColecoesDestaque = () => {
         Coleções em destaque
       </h2>
 
-      <div className="flex flex-col md:flex-row flex-wrap justify-center gap-6">
+      <div className="flex flex-col md:flex-row flex-wrap justify-center gap-6 w-full">
         {collections.map((collection) => (
           <div
             key={collection.id}
-            className="relative bg-light-blue shadow-md rounded-lg p-6 md:p-8 w-full md:w-[27rem] h-auto min-h-[18rem]"
+            className="relative bg-light-blue shadow-md rounded-lg p-6 md:p-8 w-full md:w-96 h-auto min-h-[18rem]"
           >
             <div className="z-20 relative">
               <span className="font-bold bg-yellow text-sm py-1 px-4 rounded-full inline-block">

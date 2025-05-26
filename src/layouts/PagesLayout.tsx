@@ -7,7 +7,11 @@ const PagesLayout = () => {
   return (
     <>
       <Header />
-      <Outlet />
+      <div className="pt-20">
+        <div className="pt-6 md:pt-16">
+          <Outlet />
+        </div>
+      </div>
       <Footer />
     </>
   );
