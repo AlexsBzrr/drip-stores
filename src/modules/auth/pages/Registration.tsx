@@ -48,7 +48,7 @@ const Registration: React.FC = () => {
     }
 
     axios
-      .post("http://localhost:3300/api/clientes", JSON.stringify(payload), {
+      .post("http://localhost:8800/v1/clientes", JSON.stringify(payload), {
         headers: {
           "Content-Type": "application/json",
         },
