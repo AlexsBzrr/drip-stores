@@ -15,7 +15,7 @@ const HotProduct = () => {
           <div
             onClick={() => handleClick(item.id)}
             key={item.id}
-            className="bg-white rounded-xl shadow-md p-4 w-full hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+            className="bg-white rounded-xl shadow-md p-4 w-full hover:shadow-lg  cursor-pointer transition-transform duration-300 hover:scale-105"
           >
             <ProductCard item={item} />
           </div>

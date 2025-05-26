@@ -99,6 +99,7 @@ const Header = () => {
 
   const handleClick = () => navigate("/loginCliente");
   const handleClickCadastro = () => navigate("/criarConta");
+  const handleClickHome = () => navigate("/");
   const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
@@ -124,9 +125,10 @@ const Header = () => {
               <img src={menu} alt="Menu" />
             </button>
             <img
-              className="h-8 md:h-10 w-32 md:w-48"
+              className="h-8 md:h-10 w-32 md:w-48 cursor-pointer"
               src={logo}
               alt="Digital Store"
+              onClick={handleClickHome}
             />
           </div>
           {!isLoginRoute && (
@@ -291,8 +293,18 @@ const Header = () => {
 
       {/* Menu lateral Mobile */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 flex md:hidden bg-black bg-opacity-40">
-          <aside className="bg-white w-4/5 h-full p-6 relative">
+        <div
+          className={`fixed inset-0 z-50 flex md:hidden bg-dark-gray bg-opacity-40 transition-opacity duration-1000 ease-in-out ${
+            isMobileMenuOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }`}
+        >
+          <aside
+            className={`bg-white w-4/5 h-full p-6 relative transform transition-transform duration-1000 ease-in-out delay-100 ${
+              isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
+          >
             <button
               className="absolute top-4 right-4 text-xl font-bold"
               onClick={toggleMobileMenu}

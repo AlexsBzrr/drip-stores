@@ -61,11 +61,11 @@ const ProductListing = () => {
           </h2>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6">
-          {collections.slice(0, 15).map((item) => (
+          {collections.slice(0, 8).map((item) => (
             <div
               key={item.id}
               onClick={() => handleClick(item.id)}
-              className="bg-white rounded-xl shadow-sm p-4 w-full hover:shadow-md transition-shadow duration-300 cursor-pointer"
+              className="bg-white rounded-xl shadow-md p-4 w-full hover:shadow-lg  cursor-pointer transition-transform duration-300 hover:scale-105"
             >
               <ProductCard item={item} />
             </div>

@@ -210,7 +210,7 @@ const ProductDetails = () => {
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-6">
         {collections.slice(0, 4).map((item) => (
-          <div className="bg-white rounded-xl shadow-sm p-4 w-full hover:shadow-md transition-shadow duration-300 cursor-pointer">
+          <div className="bg-white rounded-xl shadow-sm p-4 w-full hover:shadow-md cursor-pointer transition-transform duration-300 hover:scale-110">
             <ProductCard item={item} />
           </div>
         ))}
