@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../store";
 import { toast } from "react-toastify";
 import { useAuth } from "../../../contexts/AuthContext";
+const apiUrl = import.meta.env.VITE_BASE_URL;
 
 //import { useState } from "react";
 
@@ -30,7 +31,7 @@ const Login = () => {
 
   const handleLogin = (data: ILogin) => {
     axios
-      .post("http://localhost:8800/v1/loginCliente", data)
+      .post(`${apiUrl}/loginCliente`, data)
       .then((response) => {
         const { nome } = response.data.data;
         sessionStorage.setItem("nome", response.data.data.nome);

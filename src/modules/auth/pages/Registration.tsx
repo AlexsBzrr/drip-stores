@@ -3,6 +3,7 @@ import { INewRegistration } from "./data/registration.interface";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+const apiUrl = import.meta.env.VITE_BASE_URL;
 
 const Registration: React.FC = () => {
   const location = useLocation();
@@ -48,7 +49,7 @@ const Registration: React.FC = () => {
     }
 
     axios
-      .post("http://localhost:8800/v1/clientes", JSON.stringify(payload), {
+      .post(`${apiUrl}/clientes`, JSON.stringify(payload), {
         headers: {
           "Content-Type": "application/json",
         },

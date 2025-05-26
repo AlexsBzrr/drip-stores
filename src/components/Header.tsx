@@ -95,7 +95,7 @@ const Header = () => {
     dispatch(toggleCart());
   };
 
-  const handleClick = () => navigate("/login");
+  const handleClick = () => navigate("/loginCliente");
   const handleClickCadastro = () => navigate("/criarConta");
   const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);

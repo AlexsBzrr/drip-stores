@@ -88,7 +88,7 @@ const ProductDetails = () => {
     <div className="p-8 max-w-screen-xl mx-auto">
       {/* Caminho */}
       <nav className="text-sm text-dark-gray-2 mb-4">
-        Home / Produtos / Tênis / {produto.title}
+        Home / Produtos / Tênis / <strong>{produto.description}</strong>
       </nav>
 
       {/* Conteúdo principal */}
