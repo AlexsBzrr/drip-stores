@@ -3,7 +3,7 @@ import { collections } from "../data/Colections";
 import ProductCard from "./ProductCard";
 import { useState } from "react";
 
-const filter = "/images/filter.svg";
+import filter from "../assets/images/filter.svg";
 
 const ProductListing = () => {
   const navigate = useNavigate();

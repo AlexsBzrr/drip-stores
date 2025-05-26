@@ -1,12 +1,12 @@
 import { useState } from "react";
 import ButtonPrimary from "../buttons/ButtonPrimary";
-const shoes = "/images/shoesWhite-1.svg";
-const shoes2 = "/images/laye1.svg";
-const shoes3 = "/images/newtenis3.png";
-const shoes4 = "/images/nikejordan.png";
-const ornaments = "/images/Ornament 11.svg";
-const next = "/images/next.svg";
-const prev = "/images/previous.svg";
+import shoes from "./../../assets/images/shoesWhite-1.svg";
+import shoes2 from "./../../assets/images/laye1.svg";
+import shoes3 from "./../../assets/images/newtenis3.png";
+import shoes4 from "./../../assets/images/nikejordan.png";
+import ornaments from "./../../assets/images/Ornament 11.svg";
+import next from "./../../assets/images/next.svg";
+import prev from "./../../assets/images/previous.svg";
 
 interface IStep {
   title: string;

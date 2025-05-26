@@ -1,8 +1,8 @@
 // images
-const camisa = "/images/blusa.svg";
+import camisa from "../assets/images/blusa.svg";
 import ButtonSecondary from "./buttons/Buttonsecondary";
-import fone from "/images/fone.svg";
-const tenis = "/images/tenis.svg";
+import fone from "../assets/images/fone.svg";
+import tenis from "../assets/images/tenis.svg";
 
 const collections = [
   {

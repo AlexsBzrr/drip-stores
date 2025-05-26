@@ -7,10 +7,10 @@ import Footer from "../../../components/Footer";
 import { ICreateAccount } from "./data/registration.interface";
 //import { useState } from "react";
 
-const tenis1 = "/images/melvin-buezo-1.svg";
-const tenis2 = "/images/melvin-buezo-2.svg";
-const gmail = "/images/gmail1.svg";
-const facebook = "/images/Original.svg";
+import tenis1 from "./../../../assets/images/melvin-buezo-1.svg";
+import tenis2 from "./../../../assets/images/melvin-buezo-2.svg";
+import gmail from "./../../../assets/images/gmail1.svg";
+import facebook from "./../../../assets/images/Original.svg";
 const CreateAccount = () => {
   const { register, handleSubmit } = useForm<ICreateAccount>();
   const navigate = useNavigate();

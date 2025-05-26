@@ -7,12 +7,12 @@ import { toast } from "react-toastify";
 import CartDropdown from "./CartDropdown";
 import { toggleCart } from "../store/slices/cartSlice";
 
-const logo = "/images/logo.svg";
-const search = "/images/search.svg";
-const searchPink = "/images/search_pink.svg";
-const carrinho = "/images/mini-cart.svg";
-const menu = "/images/menu.svg";
-const account = "/images/account.svg";
+import logo from "../assets/images/logo.svg";
+import search from "../assets/images/search.svg";
+import searchPink from "../assets/images/search_pink.svg";
+import carrinho from "../assets/images/mini-cart.svg";
+import menu from "../assets/images/menu.svg";
+import account from "../assets/images/account.svg";
 
 const NavItem = ({
   to,

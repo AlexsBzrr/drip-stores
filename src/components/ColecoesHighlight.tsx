@@ -1,16 +1,16 @@
 import { useState } from "react";
 
 // imports de imagens
-import camisaPink from "/icons/camisaPink.svg";
-import calcaPink from "/icons/pantsPink.svg";
-import bonePink from "/icons/capPink.png";
-import headphonePink from "/icons/headphonePink.svg";
-import tenisPink from "/icons/sneakersPink.svg";
-import camisaGray from "/icons/camisaGray.svg";
-import calcaGray from "/icons/pantsGray.svg";
-import boneGray from "/icons/capGray.png";
-import headphoneGray from "/icons/headphoneGray.svg";
-import tenisGray from "/icons/sneakersGray.svg";
+import camisaPink from "../assets/icons/camisaPink.svg";
+import calcaPink from "../assets/icons/pantsPink.svg";
+import bonePink from "../assets//icons/capPink.png";
+import headphonePink from "../assets//icons/headphonePink.svg";
+import tenisPink from "../assets//icons/sneakersPink.svg";
+import camisaGray from "../assets//icons/camisaGray.svg";
+import calcaGray from "../assets//icons/pantsGray.svg";
+import boneGray from "../assets//icons/capGray.png";
+import headphoneGray from "../assets//icons/headphoneGray.svg";
+import tenisGray from "../assets//icons/sneakersGray.svg";
 
 const collections = [
   { id: 1, image: camisaPink, image2: camisaGray, title: "Camisetas" },

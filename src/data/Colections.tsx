@@ -3,21 +3,21 @@ import {
   IProductDetails,
 } from "../interfaces/productsDetails.interface";
 
-const tenis = "/images/newtenis6.png";
-const tenis2 = "/images/tenis2.svg";
-const tenis3 = "/images/newtenis.png";
-const tenis4 = "/images/newtenis5.png";
-const tenis5 = "/images/newtenis3.png";
-const tenis6 = "/images/newtenis4.png";
-const tenis7 = "/images/newtenis2.png";
-const tenis8 = "/images/tenis8.svg";
-const tenis9 = "/images/newtenis6.png";
-const tenis10 = "/images/tenis2.svg";
-const tenis11 = "/images/newtenis.png";
-const tenis12 = "/images/newtenis5.png";
-const tenis13 = "/images/newtenis3.png";
-const tenis14 = "/images/newtenis4.png";
-const tenis15 = "/images/newtenis2.png";
+import tenis from "../assets/images/newtenis6.png";
+import tenis2 from "../assets/images/tenis2.svg";
+import tenis3 from "../assets/images/newtenis.png";
+import tenis4 from "../assets/images/newtenis5.png";
+import tenis5 from "../assets/images/newtenis3.png";
+import tenis6 from "../assets/images/newtenis4.png";
+import tenis7 from "../assets/images/newtenis2.png";
+import tenis8 from "../assets/images/tenis8.svg";
+import tenis9 from "../assets/images/newtenis6.png";
+import tenis10 from "../assets/images/tenis2.svg";
+import tenis11 from "../assets/images/newtenis.png";
+import tenis12 from "../assets/images/newtenis5.png";
+import tenis13 from "../assets/images/newtenis3.png";
+import tenis14 from "../assets/images/newtenis4.png";
+import tenis15 from "../assets/images/newtenis2.png";
 
 export const collections: IProductDetails[] = [
   {

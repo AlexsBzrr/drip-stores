@@ -1,8 +1,8 @@
 import { useState } from "react";
 import ButtonPrimary from "./buttons/ButtonPrimary";
 
-const tenis = "/images/laye1.svg";
-const backgroud = "/images/Ellipse11.svg";
+import tenis from "../assets/images/laye1.svg";
+import backgroud from "../assets/images/Ellipse11.svg";
 
 const Ofertas = [
   {
