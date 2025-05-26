@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { collections } from "../data/Colections";
-import ProductCard from "../pages/ProductCard";
+import ProductCard from "./ProductCard";
 
 const HotProduct = () => {
   const navigate = useNavigate();

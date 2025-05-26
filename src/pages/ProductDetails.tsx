@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { IProductDetails } from "../interfaces/productsDetails.interface";
 
 import ButtonPrimary from "../components/buttons/ButtonPrimary";
-import ProductCard from "./ProductCard";
+import ProductCard from "../components/ProductCard";
 import { collections } from "../data/Colections";
 import { FadeLoader } from "react-spinners";
 import { toast } from "react-toastify";
@@ -198,14 +198,14 @@ const ProductDetails = () => {
       </div>
 
       <div className="flex justify-between items-center mb-6">
-        <span className="text-2xl font-bold text-dark-gray-2">
+        <span className="text-xl md:text-2xl font-bold text-dark-gray-2">
           Produtos Relacionados
         </span>
         <span
           onClick={handleClick}
           className="text-lg text-primary font-normal cursor-pointer "
         >
-          Ver todos →{" "}
+          Ver todos →
         </span>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-6">

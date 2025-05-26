@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { collections } from "../data/Colections";
-import ProductCard from "./ProductCard";
+import ProductCard from "../components/ProductCard";
 import { useState } from "react";
 
 import filter from "../assets/images/filter.svg";

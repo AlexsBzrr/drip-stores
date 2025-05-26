@@ -15,12 +15,12 @@ const ProductCard: React.FC<Props> = ({ item }) => {
       <img
         src={item.image}
         alt={item.description}
-        className={`w-full h-40 object-contain mb-3 ${
+        className={`w-full h-32 object-contain mb-3 ${
           !item.discount ? "mt-8" : ""
         }`}
       />
       <h3 className="text-xs text-dark-gray-2 font-bold mb-1">{item.title}</h3>
-      <p className="text-sm font-semibold text-dark-gray mb-1">
+      <p className="text-sm font-semibold text-dark-gray mb-1 truncate">
         {item.description}
       </p>
       <div className="flex items-center gap-2">
