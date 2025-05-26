@@ -20,7 +20,7 @@ const ProductOffering = () => {
   const oferta = Ofertas[currentStep];
 
   return (
-    <div className="w-full px-4 md:px-12 lg:px-24 py-12">
+    <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 items-center">
         {/* Imagem */}
         <div className="relative flex justify-center items-center w-full max-w-md mx-auto">

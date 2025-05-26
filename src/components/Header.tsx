@@ -115,7 +115,7 @@ const Header = () => {
 
   return (
     <div className="w-full bg-white shadow-sm relative z-50">
-      <div className="container mx-auto px-4 md:px-8 lg:px-12">
+      <div className="w-full max-w-screen-xl mx-auto px-4 md:px-8 lg:px-12">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <button className="md:hidden mr-4" onClick={toggleMobileMenu}>
@@ -164,6 +164,7 @@ const Header = () => {
                 {/* Carrinho */}
                 <div className="relative">
                   <button
+                    title="Carrinho"
                     className="mr-1 md:mr-6 relative"
                     onClick={handleCartToggle}
                   >
@@ -197,6 +198,7 @@ const Header = () => {
                 {/* Dropdown do Perfil */}
                 <div className="relative" ref={profileDropdownRef}>
                   <button
+                    title="Perfil"
                     onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
                     className={`${
                       !user.token || isMobile ? "hidden" : ""
@@ -267,7 +269,7 @@ const Header = () => {
 
       {/* Navegação desktop */}
       {!isLoginRoute && (
-        <nav className="hidden md:flex w-full h-20 justify-start pl-24 bg-white">
+        <nav className="hidden md:flex w-full h-20 justify-start px-4 md:px-8 lg:px-12 bg-white max-w-screen-xl mx-auto">
           <ul className="flex justify-between gap-x-6 items-center ">
             <li>
               <NavItem to="/home" label="Home" />

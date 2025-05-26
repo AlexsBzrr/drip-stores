@@ -30,7 +30,7 @@ const Login = () => {
 
   const handleLogin = (data: ILogin) => {
     axios
-      .post("http://localhost:3300/api/login", data)
+      .post("http://localhost:8800/v1/loginCliente", data)
       .then((response) => {
         const { nome } = response.data.data;
         sessionStorage.setItem("nome", response.data.data.nome);

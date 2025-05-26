@@ -27,17 +27,12 @@ const CartDropdown = () => {
 
   const handleViewCart = () => {
     dispatch(closeCart());
-    // Navegar para página do carrinho se existir
-    // navigate('/carrinho');
   };
 
   const handleEmptyCart = () => {
     dispatch(closeCart());
-    // Navegar para produtos
-    // navigate('/produtos');
   };
 
-  // Função para formatar o preço com verificação de NaN
   const formatPrice = (price: number) => {
     const validPrice =
       isNaN(price) || price === null || price === undefined ? 0 : price;

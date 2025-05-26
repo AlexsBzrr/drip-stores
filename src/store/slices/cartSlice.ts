@@ -104,7 +104,6 @@ const cartSlice = createSlice({
         }
       }
 
-      // Recalcular totais
       state.totalItems = state.items.reduce(
         (total, item) => total + item.quantity,
         0
