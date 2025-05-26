@@ -44,7 +44,9 @@ const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  const isLoginRoute = location.pathname === "/login";
+  const isLoginRoute =
+    location.pathname === "/loginCliente" ||
+    location.pathname === "/criarConta";
 
   // Ref para o dropdown do perfil
   const profileDropdownRef = useRef<HTMLDivElement>(null);
@@ -249,7 +251,7 @@ const Header = () => {
 
         {/* Busca Mobile */}
         {isSearchOpen && !isLoginRoute && (
-          <div className="md:hidden w-full px-4 py-2 bg-white shadow-sm z-40">
+          <div className="md:hidden w-full px-4 bg-white shadow-sm z-40">
             <div className="flex items-center bg-light-gray-3 rounded-lg overflow-hidden">
               <input
                 type="text"

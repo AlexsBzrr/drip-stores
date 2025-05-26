@@ -54,10 +54,10 @@ const Login = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-secondary">
       <Header />
-      <div className="flex flex-1 items-center justify-center px-4 py-12 relative">
+      <div className="flex flex-1 items-center justify-center px-4 pt-32 md:pt-40 pb-8 md:pb-20 relative">
         <div className="grid md:grid-cols-2 w-full max-w-6xl mx-auto z-10 gap-8">
           {/* Formulário */}
-          <div className="flex flex-col justify-center p-10 space-y-6 rounded-lg bg-white shadow-md w-full h-[30rem]">
+          <div className="flex flex-col justify-center p-10 space-y-6 rounded-lg bg-white shadow-md w-full h-[24rem]">
             <form onSubmit={handleSubmit(handleLogin)}>
               <h2 className="text-3xl font-bold text-dark-gray">
                 Acesse sua conta
@@ -78,8 +78,8 @@ const Login = () => {
                     Login *
                   </label>
                   <input
-                    type="text"
-                    placeholder="Insira seu login ou email"
+                    type="email"
+                    placeholder="Insira seu email"
                     className="mt-1 block w-full rounded-md border border-light-gray-3 p-2 shadow-sm focus:ring-primary focus:border-primary"
                     {...register("email")}
                   />
@@ -91,6 +91,7 @@ const Login = () => {
                   <input
                     type="password"
                     placeholder="Insira sua senha"
+                    required
                     className="mt-1 block w-full rounded-md border border-light-gray-3 p-2 shadow-sm focus:ring-primary focus:border-primary"
                     {...register("password")}
                   />
