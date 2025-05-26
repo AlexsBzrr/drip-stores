@@ -5,6 +5,30 @@ import axios from "axios";
 import { toast } from "react-toastify";
 const apiUrl = import.meta.env.VITE_BASE_URL;
 
+const formatCPF = (value: string) => {
+  const numbers = value.replace(/\D/g, "").slice(0, 11);
+  return numbers.replace(
+    /(\d{3})(\d{3})(\d{3})(\d{0,2})/,
+    (_, p1, p2, p3, p4) => {
+      return `${p1}.${p2}.${p3}-${p4}`;
+    }
+  );
+};
+
+const formatCEP = (value: string) => {
+  const numbers = value.replace(/\D/g, "").slice(0, 8);
+  return numbers.replace(/(\d{5})(\d{0,3})/, (_, p1, p2) => {
+    return `${p1}-${p2}`;
+  });
+};
+
+const formatTelefone = (value: string) => {
+  const numbers = value.replace(/\D/g, "").slice(0, 11);
+  return numbers.replace(/(\d{2})(\d{4,5})(\d{0,4})/, (_, p1, p2, p3) => {
+    return `(${p1}) ${p2}-${p3}`;
+  });
+};
+
 const Registration: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -35,19 +59,41 @@ const Registration: React.FC = () => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
+
+    let newValue: string | boolean = value;
+
+    if (type === "checkbox") {
+      newValue = checked;
+    } else {
+      if (name === "cpf") {
+        newValue = formatCPF(value);
+      } else if (name === "cep") {
+        newValue = formatCEP(value);
+      } else if (name === "telefone") {
+        newValue = formatTelefone(value);
+      }
+    }
+
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: newValue,
     }));
   };
 
   const handleSubmitForm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { aceitaOfertas, ...payload } = formData;
-    if (aceitaOfertas) {
-      // Adicionar aceitaOfertas ao payload
-    }
+    const unmask = (value: string) => value.replace(/\D/g, "");
 
+    const payload = {
+      ...formData,
+      cpf: unmask(formData.cpf),
+      telefone: unmask(formData.telefone),
+      cep: unmask(formData.cep),
+    };
+
+    if (formData.aceitaOfertas) {
+      payload["aceitaOfertas"] = true;
+    }
     axios
       .post(`${apiUrl}/clientes`, JSON.stringify(payload), {
         headers: {

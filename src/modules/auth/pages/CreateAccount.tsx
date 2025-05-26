@@ -17,7 +17,7 @@ const CreateAccount = () => {
   //const [isLoged, setIsLoged] = useState(false);
   // const { setIsLoged } = useAuth();
   const handleLogin = () => {
-    navigate("/login", { replace: true });
+    navigate("/loginCliente", { replace: true });
   };
 
   const handleCreateAccount = (data: ICreateAccount) => {
@@ -27,10 +27,10 @@ const CreateAccount = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-secondary">
       <Header />
-      <div className="flex flex-1 items-center justify-center px-4 py-12 relative">
+      <div className="flex flex-1 items-center justify-center px-4 pt-32 md:pt-40 pb-8 md:pb-20 relative">
         <div className="grid md:grid-cols-2 w-full max-w-6xl mx-auto z-10 gap-8">
           {/* Formulário */}
-          <div className="flex flex-col justify-center p-10 space-y-6 rounded-lg bg-white shadow-md w-full h-[25rem]">
+          <div className="flex flex-col justify-center p-10 space-y-6 rounded-lg bg-white shadow-md w-full h-[24rem]">
             <form onSubmit={handleSubmit(handleCreateAccount)}>
               <h2 className="text-3xl font-bold text-dark-gray pb-4">
                 Crie sua conta
@@ -51,8 +51,9 @@ const CreateAccount = () => {
                     Email *
                   </label>
                   <input
-                    type="text"
+                    type="email"
                     placeholder="Insira seu email"
+                    required
                     className="mt-1 block w-full rounded-md border border-light-gray p-2 shadow-sm focus:ring-primary focus:border-primary"
                     {...register("email")}
                   />
