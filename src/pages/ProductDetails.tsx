@@ -154,7 +154,7 @@ const ProductDetails = () => {
                 <button
                   key={size}
                   onClick={() => setSelectedSize(size)}
-                  className={`px-4 py-2 border rounded-md text-sm transition-colors ${
+                  className={`px-4 py-2 border rounded-md text-sm transition-colors hover:bg-primary hover:text-white hover:border-primary duration-300 ${
                     selectedSize === size
                       ? "border-primary bg-primary text-white"
                       : "border-light-gray-2 hover:border-black"
@@ -209,7 +209,7 @@ const ProductDetails = () => {
         </span>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-6">
-        {collections.slice(0, 4).map((item) => (
+        {collections.slice(0, 8).map((item) => (
           <div className="bg-white rounded-xl shadow-sm p-4 w-full hover:shadow-md cursor-pointer transition-transform duration-300 hover:scale-110">
             <ProductCard item={item} />
           </div>

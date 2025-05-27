@@ -6,9 +6,11 @@ import {
   closeCart,
   CartItem,
 } from "../store/slices/cartSlice";
+import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "./buttons/ButtonPrimary";
 
 const CartDropdown = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { items, isOpen } = useSelector((state: RootState) => state.cart);
 
@@ -28,9 +30,8 @@ const CartDropdown = () => {
   const handleViewCart = () => {
     dispatch(closeCart());
   };
-
-  const handleEmptyCart = () => {
-    dispatch(closeCart());
+  const handleViewProducts = () => {
+    navigate("/produtos");
   };
 
   const formatPrice = (price: number) => {
@@ -68,7 +69,7 @@ const CartDropdown = () => {
         {items.length === 0 ? (
           <div className="p-6 text-center">
             <p className="text-gray-500 mb-4">Seu carrinho está vazio</p>
-            <ButtonPrimary onClick={handleEmptyCart} className="w-full">
+            <ButtonPrimary onClick={handleViewProducts} className="w-full">
               Ver Produtos
             </ButtonPrimary>
           </div>
@@ -155,12 +156,6 @@ const CartDropdown = () => {
               </div>
 
               <div className="space-y-2">
-                <button
-                  onClick={handleEmptyCart}
-                  className="w-full text-center text-sm text-primary hover:underline"
-                >
-                  Esvaziar
-                </button>
                 <ButtonPrimary onClick={handleViewCart} className="w-full">
                   Ver Carrinho
                 </ButtonPrimary>

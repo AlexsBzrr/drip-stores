@@ -1,12 +1,26 @@
 import { IProductDetails } from "../interfaces/productsDetails.interface";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   item: IProductDetails;
 }
 
 const ProductCard: React.FC<Props> = ({ item }) => {
+  const navigate = useNavigate();
+
+  const handleScroolToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleClick = (id: number) => {
+    handleScroolToTop();
+    navigate(`/produtos/${id}`);
+  };
   return (
-    <div className="bg-white rounded-xl  cursor-pointer">
+    <div
+      className="bg-white rounded-xl  cursor-pointer"
+      onClick={() => handleClick(item.id)}
+    >
       {item.discount && (
         <span className="font-bold bg-lime-200 text-dark-gray-2 text-xs py-1 px-3 rounded-full inline-block mb-2">
           {item.discount}
