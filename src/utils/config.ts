@@ -14,12 +14,9 @@ if (!envAppStage || !Object.keys(AppStages).includes(envAppStage)) {
 }
 
 export const appStage: TAppStage = envAppStage as TAppStage;
-
 export const appName = "DripStores";
 export const baseUrl: string = import.meta.env.VITE_BASE_URL!;
-//export const apiToken: string = import.meta.env.VITE_API_TOKEN!;
 export const debugMode = import.meta.env.VITE_NODE_ENV === "development";
-
 export const apiUrl = {
   auth: import.meta.env.VITE_API_AUTH,
 };

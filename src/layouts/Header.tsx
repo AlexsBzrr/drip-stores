@@ -1,6 +1,6 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
-import ButtonPrimary from "./buttons/ButtonPrimary";
+import ButtonPrimary from "../components/buttons/ButtonPrimary";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../store";
 import { toast } from "react-toastify";

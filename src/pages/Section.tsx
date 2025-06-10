@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import axios from "axios";
 import { getAuthServiceUrl } from "../utils/config";
 
@@ -9,6 +9,12 @@ interface ProductOption {
   radius?: number;
   type: "text" | "color";
   values: string[];
+}
+
+interface Users {
+  id: number;
+  firstname: string;
+  email: string;
 }
 
 interface ProductFormData {
@@ -62,6 +68,17 @@ const Section: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const [users, setUsers] = useState<Users[]>([]);
+
+  const handleGetUser = () => {
+    axios.get(`${getAuthServiceUrl()}/user`).then((response) => {
+      setUsers(response.data.users);
+    });
+  };
+
+  useEffect(() => {
+    handleGetUser();
+  }, []);
 
   // Função para manipular mudanças nos campos de texto
   const handleInputChange = (
@@ -403,6 +420,18 @@ const Section: React.FC = () => {
             onChange={handleImageUpload}
             className="w-full border p-2 rounded"
           />
+          <div>
+            <ul>
+              {users.map((user) => (
+                <li
+                  key={user.id}
+                  className="bg-light-gray-3 px-3 py-1 rounded-full flex items-center"
+                >
+                  {user.firstname}
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
             {imageFiles.map((file, index) => (

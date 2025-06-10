@@ -27,7 +27,7 @@ function PathsContainer() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/produtos" element={<ProductListing />} />
         <Route path="/produtos/:id" element={<ProductDetails />} />
-        <Route path="/categorias" element={<NotFound />} />
+
         {/* Rotas com proteção */}
         <Route
           path="/meusPedidos"
@@ -38,7 +38,7 @@ function PathsContainer() {
           }
         />
       </Route>
-
+      <Route path="/categorias" element={<NotFound />} />
       {/* Rota para "not found" */}
       <Route path="*" element={<NotFound />} />
     </Routes>

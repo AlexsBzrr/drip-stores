@@ -1,19 +1,23 @@
 import { Link } from "react-router-dom";
+import { MoveLeft } from "lucide-react";
 
-const NotFound = () => {
+export default function NotFound() {
   return (
-    <div className="w-full h-screen flex justify-center items-center ">
-      <button className="bg-primary text-white px-4 py-2 rounded-lg absolute top-4 left-4">
-        <Link to="/">Volta</Link>
-      </button>
-      <span
-        style={{ fontSize: "2.5rem" }}
-        className=" text-primary text-9xl font-bold text-center"
-      >
-        404 - Página não encontrada
-      </span>
+    <div className="min-h-screen flex items-center justify-center bg-transparent px-4">
+      <div className="text-center max-w-md animate-fadeIn">
+        <h1 className="text-6xl font-bold text-primary mb-4">404</h1>
+        <p className="text-xl text-dark-gray mb-2">Página não encontrada</p>
+        <p className="text-light-gray mb-6">
+          A página que você está procurando não existe ou foi movida.
+        </p>
+        <Link
+          to="/"
+          className="inline-flex items-center px-4 py-2 bg-primary text-white rounded-full hover:bg-opacity-85 transition"
+        >
+          <MoveLeft className="w-4 h-4 mr-2" />
+          Voltar para o início
+        </Link>
+      </div>
     </div>
   );
-};
-
-export default NotFound;
+}

@@ -1,8 +1,8 @@
-import CardColecoesDestaque from "../components/CardCollectionsHighlight";
-import ColecoesDestaque from "../components/ColecoesHighlight";
-import HotProduct from "../components/HotProduct";
-import ProductOffering from "../components/ProductOffering";
-import Stepper from "../components/Stepper/Stepper";
+import CardColecoesDestaque from "../layouts/CardCollectionsHighlight";
+import ColecoesDestaque from "../layouts/ColecoesHighlight";
+import HotProduct from "../layouts/HotProduct";
+import ProductOffering from "../layouts/ProductOffering";
+import Stepper from "../layouts/Stepper";
 
 const HomePage = () => {
   return (

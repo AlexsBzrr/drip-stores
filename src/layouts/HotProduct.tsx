@@ -9,7 +9,7 @@ const HotProduct = () => {
         {collections.slice(0, 8).map((item) => (
           <div
             key={item.id}
-            className="bg-white rounded-xl shadow-md p-4 w-full hover:shadow-lg  cursor-pointer transition-transform duration-300 hover:scale-105"
+            className="bg-white rounded-xl shadow-md p-4 w-full hover:shadow-primary cursor-pointer transition-transform duration-300 hover:scale-105"
           >
             <ProductCard item={item} />
           </div>

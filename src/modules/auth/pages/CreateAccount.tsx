@@ -2,8 +2,8 @@ import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../../components/buttons/ButtonPrimary";
 import { useForm } from "react-hook-form";
 
-import Header from "../../../components/Header";
-import Footer from "../../../components/Footer";
+import Header from "../../../layouts/Header";
+import Footer from "../../../layouts/Footer";
 import { ICreateAccount } from "./data/registration.interface";
 //import { useState } from "react";
 

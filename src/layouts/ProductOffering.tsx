@@ -1,8 +1,9 @@
 import { useState } from "react";
-import ButtonPrimary from "./buttons/ButtonPrimary";
+import ButtonPrimary from "../components/buttons/ButtonPrimary";
 
 import tenis from "../assets/images/laye1.svg";
 import backgroud from "../assets/images/Ellipse11.svg";
+import { useNavigate } from "react-router-dom";
 
 const Ofertas = [
   {
@@ -16,8 +17,17 @@ const Ofertas = [
 ];
 
 const ProductOffering = () => {
+  const navigate = useNavigate();
   const [currentStep] = useState(0);
   const oferta = Ofertas[currentStep];
+  const handleScroolToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleRedirect = () => {
+    navigate("/produtos");
+    handleScroolToTop();
+  };
 
   return (
     <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-white">
@@ -42,12 +52,15 @@ const ProductOffering = () => {
             {oferta.title}
           </span>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-dark-gray">
-            {oferta.headline}
+            {oferta.headline}F
           </h2>
           <p className="text-sm md:text-base leading-6 text-dark-gray-2">
             {oferta.description}
           </p>
-          <ButtonPrimary className="w-full sm:w-56 h-12 mt-4">
+          <ButtonPrimary
+            onClick={handleRedirect}
+            className="w-full sm:w-56 h-12 mt-4"
+          >
             Ver Oferta
           </ButtonPrimary>
         </div>

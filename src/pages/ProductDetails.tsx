@@ -2,13 +2,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { IProductDetails } from "../interfaces/productsDetails.interface";
-
-import ButtonPrimary from "../components/buttons/ButtonPrimary";
-import ProductCard from "../components/ProductCard";
 import { collections } from "../data/Colections";
 import { FadeLoader } from "react-spinners";
 import { toast } from "react-toastify";
 import { addToCart } from "../store/slices/cartSlice";
+
+import ButtonPrimary from "../components/buttons/ButtonPrimary";
+import ProductCard from "../layouts/ProductCard";
 
 const ProductDetails = () => {
   const navigate = useNavigate();
@@ -19,7 +19,6 @@ const ProductDetails = () => {
   );
   const [selectedSize, setSelectedSize] = useState<number | null>(null);
   const [selectedColor, setSelectedColor] = useState<number | null>(null);
-
   const sizes = [35, 36, 37, 38, 39, 40, 41, 42];
   const colors = [
     { name: "Rosa", class: "bg-pink-400" },
@@ -38,7 +37,6 @@ const ProductDetails = () => {
   const handleAddToCart = () => {
     if (!produto) return;
 
-    // Validação de tamanho e cor
     if (selectedSize === null) {
       toast.error("Por favor, selecione um tamanho");
       return;
@@ -49,7 +47,6 @@ const ProductDetails = () => {
       return;
     }
 
-    // Adicionar ao carrinho
     dispatch(
       addToCart({
         id: produto.id,
@@ -210,7 +207,7 @@ const ProductDetails = () => {
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-6">
         {collections.slice(0, 8).map((item) => (
-          <div className="bg-white rounded-xl shadow-sm p-4 w-full hover:shadow-md cursor-pointer transition-transform duration-300 hover:scale-110">
+          <div className="bg-white rounded-xl shadow-sm p-4 w-full hover:shadow-primary cursor-pointer transition-transform duration-300 hover:scale-105">
             <ProductCard item={item} />
           </div>
         ))}

@@ -1,6 +1,6 @@
 // images
 import camisa from "../assets/images/blusa.svg";
-import ButtonSecondary from "./buttons/Buttonsecondary";
+import ButtonSecondary from "../components/buttons/Buttonsecondary";
 import fone from "../assets/images/fone.svg";
 import tenis from "../assets/images/tenis.svg";
 
@@ -30,12 +30,12 @@ const collections = [
 
 const CardColecoesDestaque = () => {
   return (
-    <div className="flex flex-col items-center justify-center px-4 md:px-24 pb-6">
+    <div className="flex flex-col items-center justify-center pb-6">
       <h2 className="text-xl md:text-2xl leading-9 text-dark-gray-2 font-bold pt-10 pb-8 text-center md:text-left">
         Coleções em destaque
       </h2>
 
-      <div className="flex flex-col md:flex-row flex-wrap justify-center gap-6 w-full">
+      <div className="flex flex-col md:flex-row flex-wrap justify-center gap-14 w-full px-4">
         {collections.map((collection) => (
           <div
             key={collection.id}

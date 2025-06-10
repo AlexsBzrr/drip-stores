@@ -1,12 +1,13 @@
-import { useState } from "react";
-import ButtonPrimary from "../buttons/ButtonPrimary";
-import shoes from "./../../assets/images/shoesWhite-1.svg";
-import shoes2 from "./../../assets/images/laye1.svg";
-import shoes3 from "./../../assets/images/newtenis3.png";
-import shoes4 from "./../../assets/images/nikejordan.png";
-import ornaments from "./../../assets/images/Ornament 11.svg";
-import next from "./../../assets/images/next.svg";
-import prev from "./../../assets/images/previous.svg";
+import { useEffect, useState } from "react";
+import ButtonPrimary from "../components/buttons/ButtonPrimary";
+import shoes from "./../assets/images/jordan.jpg";
+import shoes2 from "./../assets/images/jorrda1.png";
+import shoes3 from "./../assets/images/court.jpg";
+import shoes4 from "./../assets/images/nikeup.png";
+import ornaments from "./../assets/images/Ornament 11.svg";
+import next from "./../assets/images/next.svg";
+import prev from "./../assets/images/previous.svg";
+import { useNavigate } from "react-router-dom";
 
 interface IStep {
   title: string;
@@ -47,6 +48,7 @@ const steps: IStep[] = [
 ];
 
 const Stepper = () => {
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const step = steps[currentStep];
 
@@ -62,6 +64,23 @@ const Stepper = () => {
     }
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentStep((prev) => (prev < steps.length - 1 ? prev + 1 : 0));
+    }, 3000);
+
+    return () => clearInterval(interval); // limpa intervalo ao desmontar
+  }, []);
+
+  const handleScroolToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleRedirect = () => {
+    navigate("/produtos");
+    handleScroolToTop();
+  };
+
   return (
     <div className="max-w-screen-xl mx-auto bg-white shadow rounded-lg overflow-hidden">
       <div className="relative">
@@ -72,13 +91,16 @@ const Stepper = () => {
             <span className="text-sm md:text-base text-warning font-bold">
               {step.title}
             </span>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl text-dark-gray font-extrabold leading-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl text-dark-gray font-extrabold leading-tight">
               {step.headline}
             </h2>
             <p className="text-sm md:text-base lg:text-lg font-normal text-dark-gray-2 mb-4 md:mb-6">
               {step.description}
             </p>
-            <ButtonPrimary className="w-full md:w-56 py-3 md:py-4">
+            <ButtonPrimary
+              onClick={handleRedirect}
+              className="w-full md:w-56 py-3 md:py-4"
+            >
               Ver Ofertas
             </ButtonPrimary>
           </div>
@@ -91,7 +113,7 @@ const Stepper = () => {
               alt="Ornamentos"
             />
             <img
-              className="w-48 md:w-64 lg:w-auto mx-auto object-contain"
+              className="w-48 md:w-56 lg:w-96 mx-auto object-contain"
               src={step.image}
               alt="Produto Nike"
             />

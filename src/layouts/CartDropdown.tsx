@@ -7,7 +7,7 @@ import {
   CartItem,
 } from "../store/slices/cartSlice";
 import { useNavigate } from "react-router-dom";
-import ButtonPrimary from "./buttons/ButtonPrimary";
+import ButtonPrimary from "../components/buttons/ButtonPrimary";
 
 const CartDropdown = () => {
   const navigate = useNavigate();

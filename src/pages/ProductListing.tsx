@@ -1,5 +1,5 @@
 import { collections } from "../data/Colections";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../layouts/ProductCard";
 import { useState } from "react";
 import filter from "../assets/images/filter.svg";
 
@@ -57,7 +57,7 @@ const ProductListing = () => {
           {collections.slice(0, 12).map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-xl shadow-md p-4 w-full hover:shadow-lg  cursor-pointer transition-transform duration-300 hover:scale-105"
+              className="bg-white rounded-xl shadow-md p-4 w-full hover:shadow-primary  cursor-pointer transition-transform duration-300 hover:scale-105"
             >
               <ProductCard item={item} />
             </div>
