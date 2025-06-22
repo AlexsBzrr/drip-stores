@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
 interface UserState {
   nome: string;
   token: string;
@@ -16,7 +15,7 @@ const userSlice = createSlice({
   reducers: {
     setUser: (state, action: PayloadAction<UserState>) => {
       state.nome = action.payload.nome;
-      return action.payload;
+      state.token = action.payload.token;
     },
     logout: () => {
       return initialState;

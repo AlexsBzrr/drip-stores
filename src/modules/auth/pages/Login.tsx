@@ -42,11 +42,13 @@ const Login = () => {
             token: response.data.token,
           })
         );
-        toast.success("Login efetuado com sucesso!");
+
+        toast.success(response.data.message);
         setIsLoged(true);
         navigate("/home", { replace: true });
       })
-      .catch(() => {
+      .catch((error) => {
+        console.error("Erro no login:", error);
         toast.error("Login ou senha incorretos!");
       });
   };
