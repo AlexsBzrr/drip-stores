@@ -17,7 +17,7 @@ const CreateAccount = () => {
   //const [isLoged, setIsLoged] = useState(false);
   // const { setIsLoged } = useAuth();
   const handleLogin = () => {
-    navigate("/login", { replace: true });
+    navigate("/loginCliente", { replace: true });
   };
 
   const handleCreateAccount = (data: ICreateAccount) => {

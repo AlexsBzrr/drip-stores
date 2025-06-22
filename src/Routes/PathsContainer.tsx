@@ -15,7 +15,7 @@ function PathsContainer() {
     <Routes>
       {/* Rota de Login */}
       <Route path="/login" element={<Login />} />
-      {/* <Route path="/loginCliente" element={<Login />} /> */}
+      <Route path="/loginCliente" element={<Login />} />
 
       {/* Rotas Usuários*/}
       <Route path="/cadastro" element={<Registration />} />

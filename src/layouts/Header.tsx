@@ -45,7 +45,8 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const isLoginRoute =
-    location.pathname === "/login" || location.pathname === "/criarConta";
+    location.pathname === "/loginCliente" ||
+    location.pathname === "/criarConta";
 
   // Ref para o dropdown do perfil
   const profileDropdownRef = useRef<HTMLDivElement>(null);
@@ -96,7 +97,7 @@ const Header = () => {
     dispatch(toggleCart());
   };
 
-  const handleClick = () => navigate("/login");
+  const handleClick = () => navigate("/loginCliente");
   const handleClickCadastro = () => navigate("/criarConta");
   const handleClickHome = () => navigate("/");
   const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
