@@ -30,7 +30,7 @@ export default {
         "light-blue-1": "#eeeff4",
       },
       boxShadow: {
-        primary: "inset 10px 10px 1px 2px rgb(201,32,113)",
+        primary: "inset 0px 0px 1px 2px rgb(201,32,113)",
       },
       backgroundImage: {
         "gradient-primary": "linear-gradient(to right, #b5b6f2, #cbc7f2)",
