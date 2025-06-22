@@ -13,6 +13,7 @@ import searchPink from "../assets/images/search_pink.svg";
 import carrinho from "../assets/images/mini-cart.svg";
 import menu from "../assets/images/menu.svg";
 import account from "../assets/images/account.svg";
+import { logout } from "../store/slices/userSlice";
 
 const NavItem = ({
   to,
@@ -88,9 +89,10 @@ const Header = () => {
     sessionStorage.removeItem("nome");
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("isLoged");
+    dispatch(logout());
     toast.success("Logout efetuado com sucesso!");
-    navigate("/login", { replace: true });
     setIsProfileMenuOpen(false);
+    navigate("/loginCliente", { replace: true });
   };
 
   const handleCartToggle = () => {
