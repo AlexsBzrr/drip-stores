@@ -3,6 +3,8 @@ import { INewRegistration } from "./data/registration.interface";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { cpf as cpfValidator } from "cpf-cnpj-validator";
+
 const apiUrl = import.meta.env.VITE_BASE_URL;
 
 const formatCPF = (value: string) => {
@@ -48,6 +50,8 @@ const Registration: React.FC = () => {
     aceitaOfertas: false,
   });
 
+  const [cpfError, setCpfError] = useState<string>("");
+
   useEffect(() => {
     if (emailRecebido) {
       setFormData((prev) => ({
@@ -78,15 +82,30 @@ const Registration: React.FC = () => {
       ...prev,
       [name]: newValue,
     }));
+
+    if (name === "cpf") {
+      const unmaskedCpf = (newValue as string).replace(/\D/g, "");
+      if (unmaskedCpf.length === 11 && !cpfValidator.isValid(unmaskedCpf)) {
+        setCpfError("CPF inválido!");
+      } else {
+        setCpfError("");
+      }
+    }
   };
 
   const handleSubmitForm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const unmask = (value: string) => value.replace(/\D/g, "");
 
+    const cpfLimpo = unmask(formData.cpf);
+    if (!cpfValidator.isValid(cpfLimpo)) {
+      toast.error("CPF inválido!");
+      return;
+    }
+
     const payload = {
       ...formData,
-      cpf: unmask(formData.cpf),
+      cpf: cpfLimpo,
       telefone: unmask(formData.telefone),
       cep: unmask(formData.cep),
     };
@@ -94,6 +113,7 @@ const Registration: React.FC = () => {
     if (formData.aceitaOfertas) {
       payload["aceitaOfertas"] = true;
     }
+
     axios
       .post(`${apiUrl}/clientes`, JSON.stringify(payload), {
         headers: {
@@ -149,6 +169,7 @@ const Registration: React.FC = () => {
               readOnly
             />
           </div>
+
           <div className="flex flex-col">
             <label className="text-sm mb-1" htmlFor="nome">
               Nome Completo
@@ -173,6 +194,7 @@ const Registration: React.FC = () => {
               type="password"
               id="password"
               name="password"
+              min={6}
               placeholder="Crie uma senha"
               value={formData.password}
               onChange={handleChange}
@@ -180,7 +202,6 @@ const Registration: React.FC = () => {
               required
             />
           </div>
-
           <div className="flex flex-col">
             <label className="text-sm mb-1" htmlFor="cpf">
               CPF
@@ -192,9 +213,18 @@ const Registration: React.FC = () => {
               placeholder="Insira seu CPF"
               value={formData.cpf}
               onChange={handleChange}
-              className="p-3 border border-light-gray-2 rounded"
+              className={`p-3 border rounded ${
+                cpfError
+                  ? "border-red-500"
+                  : formData.cpf
+                  ? "border-green-500"
+                  : "border-light-gray-2"
+              }`}
               required
             />
+            {cpfError && (
+              <span className="text-red-500 text-sm">{cpfError}</span>
+            )}
           </div>
 
           <div className="flex flex-col">
