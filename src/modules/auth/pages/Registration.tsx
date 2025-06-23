@@ -7,6 +7,10 @@ import { cpf as cpfValidator } from "cpf-cnpj-validator";
 
 const apiUrl = import.meta.env.VITE_BASE_URL;
 
+const handleScroolToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
 const formatCPF = (value: string) => {
   const numbers = value.replace(/\D/g, "").slice(0, 11);
   return numbers.replace(
@@ -124,6 +128,7 @@ const Registration: React.FC = () => {
         if (response.status === 201) {
           toast.success("Cadastro efetuado com sucesso!");
           navigate("/login", { replace: true });
+          handleScroolToTop();
         }
       })
       .catch((error) => {
