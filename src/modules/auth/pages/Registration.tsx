@@ -103,6 +103,11 @@ const Registration: React.FC = () => {
       return;
     }
 
+    if (formData.password.length < 6) {
+      toast.error("A senha precisa ter no mínimo 6 caracteres.");
+      return;
+    }
+
     const payload = {
       ...formData,
       cpf: cpfLimpo,
@@ -194,7 +199,7 @@ const Registration: React.FC = () => {
               type="password"
               id="password"
               name="password"
-              min={6}
+              minLength={6}
               placeholder="Crie uma senha"
               value={formData.password}
               onChange={handleChange}
