@@ -2,6 +2,7 @@ interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
   className?: string;
+  disablad?: boolean;
 }
 
 const ButtonSecondary: React.FC<ButtonProps> = ({
