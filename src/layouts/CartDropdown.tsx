@@ -9,7 +9,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "../components/buttons/ButtonPrimary";
 import { useState } from "react";
-import PaymentMethod from "./paymentMethod";
+import PaymentMethod from "./PaymentMethod";
 
 const CartDropdown = () => {
   const navigate = useNavigate();
