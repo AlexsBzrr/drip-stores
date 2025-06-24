@@ -3,6 +3,7 @@ interface ButtonProps {
   onClick?: () => void;
   className?: string;
   type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }
 
 const ButtonPrimary: React.FC<ButtonProps> = ({

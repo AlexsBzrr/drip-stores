@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "../components/buttons/ButtonPrimary";
 import { useState } from "react";
 import PaymentMethod from "./PaymentMethod";
+import PaymentConfirmationModal from "./PaymentConfirmation";
 
 const CartDropdown = () => {
   const navigate = useNavigate();
@@ -43,6 +44,12 @@ const CartDropdown = () => {
       isNaN(price) || price === null || price === undefined ? 0 : price;
     return validPrice.toFixed(2).replace(".", ",");
   };
+
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
+    string | null
+  >(null);
+  const [showPaymentConfirmation, setShowPaymentConfirmation] = useState(false);
+  const selectedPaymentName = selectedPaymentMethod?.split(" ")[0];
 
   const calculateTotal = () => {
     const total = items.reduce((sum, item) => {
@@ -172,6 +179,18 @@ const CartDropdown = () => {
       <PaymentMethod
         isOpen={showPaymentModal}
         onClose={() => setShowPaymentModal(false)}
+        total={calculateTotal()}
+        onConfirm={(selectedPaymentMethod) => {
+          setSelectedPaymentMethod(selectedPaymentMethod);
+          setShowPaymentModal(false);
+          setShowPaymentConfirmation(true);
+        }}
+      />
+      <PaymentConfirmationModal
+        isOpen={showPaymentConfirmation}
+        onClose={() => setShowPaymentConfirmation(false)}
+        selectedPaymentMethod={selectedPaymentMethod}
+        selectedPaymentName={selectedPaymentName}
         total={calculateTotal()}
       />
     </>
