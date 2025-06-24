@@ -1,4 +1,3 @@
-// components/CartToast.tsx
 import React from "react";
 
 interface CartToastProps {

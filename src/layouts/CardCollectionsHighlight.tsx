@@ -3,6 +3,7 @@ import camisa from "../assets/images/blusa.svg";
 import ButtonSecondary from "../components/buttons/Buttonsecondary";
 import fone from "../assets/images/fone.svg";
 import tenis from "../assets/images/tenis.svg";
+import { useNavigate } from "react-router-dom";
 
 const collections = [
   {
@@ -28,7 +29,11 @@ const collections = [
   },
 ];
 
+const handleScroolToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
 const CardColecoesDestaque = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col items-center justify-center pb-6">
       <h2 className="text-xl md:text-2xl leading-9 text-dark-gray-2 font-bold pt-10 pb-8 text-center md:text-left">
@@ -49,7 +54,15 @@ const CardColecoesDestaque = () => {
                 <h3 className="text-xl md:text-3xl leading-9 text-dark-gray-2 font-bold mt-3">
                   {collection.description}
                 </h3>
-                <ButtonSecondary className="mt-6">Comprar</ButtonSecondary>
+                <ButtonSecondary
+                  onClick={() => {
+                    navigate("/produtos");
+                    handleScroolToTop();
+                  }}
+                  className="mt-6"
+                >
+                  Comprar
+                </ButtonSecondary>
               </div>
             </div>
             <img

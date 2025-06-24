@@ -8,11 +8,14 @@ import {
 } from "../store/slices/cartSlice";
 import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "../components/buttons/ButtonPrimary";
+import { useState } from "react";
+import PaymentMethod from "./paymentMethod";
 
 const CartDropdown = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { items, isOpen } = useSelector((state: RootState) => state.cart);
+  const { items, isOpen } = useSelector((state: RootState) => state.cart || {});
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
 
   const handleRemoveItem = (id: number, size?: number, color?: string) => {
     dispatch(removeFromCart({ id, size, color }));
@@ -28,8 +31,9 @@ const CartDropdown = () => {
   };
 
   const handleViewCart = () => {
-    dispatch(closeCart());
+    setShowPaymentModal(true);
   };
+
   const handleViewProducts = () => {
     navigate("/produtos");
   };
@@ -40,7 +44,6 @@ const CartDropdown = () => {
     return validPrice.toFixed(2).replace(".", ",");
   };
 
-  // Função para calcular o total com verificação
   const calculateTotal = () => {
     const total = items.reduce((sum, item) => {
       const itemPrice = isNaN(item.currentPrice) ? 0 : item.currentPrice;
@@ -157,13 +160,20 @@ const CartDropdown = () => {
 
               <div className="space-y-2">
                 <ButtonPrimary onClick={handleViewCart} className="w-full">
-                  Ver Carrinho
+                  Finalizar Pedido
                 </ButtonPrimary>
               </div>
             </div>
           </>
         )}
       </div>
+
+      {/* Modal de Pagamento */}
+      <PaymentMethod
+        isOpen={showPaymentModal}
+        onClose={() => setShowPaymentModal(false)}
+        total={calculateTotal()}
+      />
     </>
   );
 };
