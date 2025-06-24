@@ -1,12 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../../components/buttons/ButtonPrimary";
 import { useForm } from "react-hook-form";
-
 import Header from "../../../layouts/Header";
 import Footer from "../../../layouts/Footer";
 import { ICreateAccount } from "./data/registration.interface";
-//import { useState } from "react";
-
 import tenis1 from "./../../../assets/images/melvin-buezo-1.svg";
 import tenis2 from "./../../../assets/images/melvin-buezo-2.svg";
 import gmail from "./../../../assets/images/gmail1.svg";
@@ -14,8 +11,6 @@ import facebook from "./../../../assets/images/Original.svg";
 const CreateAccount = () => {
   const { register, handleSubmit } = useForm<ICreateAccount>();
   const navigate = useNavigate();
-  //const [isLoged, setIsLoged] = useState(false);
-  // const { setIsLoged } = useAuth();
   const handleLogin = () => {
     navigate("/loginCliente", { replace: true });
   };
