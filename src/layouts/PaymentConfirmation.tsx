@@ -51,13 +51,13 @@ const PaymentConfirmationModal = ({
   const handleConfirmPayment = async () => {
     setIsProcessing(true);
     await new Promise((resolve) => setTimeout(resolve, 2500));
+    setIsProcessing(false);
+    setIsSuccess(true);
 
     setTimeout(() => {
       onClose();
       reloadPage();
-      setIsProcessing(false);
-      setIsSuccess(true);
-    }, 2500);
+    }, 3000);
     navigate("/home");
   };
 
@@ -179,7 +179,6 @@ const PaymentConfirmationModal = ({
                   </div>
                 </div>
               </div>
-
               <div className="bg-green-50 rounded-lg p-4 mb-2 ">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="text-green-600 w-4 h-4">
